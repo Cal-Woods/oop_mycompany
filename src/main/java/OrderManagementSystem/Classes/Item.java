@@ -9,7 +9,7 @@ public class Item {
     //Attributes
     private String itemName;
     private int uniqueID;
-    private int quantityInStock;
+    private int quantity;
     private int reOrderLevel;
     private int reOrderQuantity;
     private double unitCostPrice;
@@ -28,7 +28,7 @@ public class Item {
         //Set Item attributes
         this.itemName = "Change name";
         this.uniqueID = 0;
-        this.quantityInStock = 0;
+        this.quantity = 0;
         this.reOrderLevel = 0;
         this.reOrderQuantity = 0;
         this.unitCostPrice = 0.00;
@@ -69,11 +69,11 @@ public class Item {
     public String getName() {
         return this.itemName;
     }
-    public void getUniqueID() {
-        this.uniqueID = globalID++;
+    public int getUniqueID() {
+        return this.uniqueID;
     }
     public int getQuantityInStock() {
-        return this.quantityInStock;
+        return this.quantity;
     }
     public int getReOrderLevel() {
         return this.reOrderLevel;
@@ -110,8 +110,8 @@ public class Item {
      * Sets a unique ID Automatically.
      * @return The new ID
      */
-    private int setUniqueID() {
-        return globalID++;
+    private void setUniqueID() {
+        this.uniqueID = globalID++;
     }
 
     public void setStockQuantity(int quantity) {
@@ -121,7 +121,7 @@ public class Item {
         }
 
         //Set quantityInStock to quantity
-        this.quantityInStock = quantity;
+        this.quantity = quantity;
     }
 
     public void setReOrderLevel(int level) {
@@ -184,7 +184,7 @@ public class Item {
         }
 
         //Increment quantityinStock by quantity
-        this.quantityInStock += amount;
+        this.quantity += amount;
         return true;
     }
 
@@ -200,7 +200,7 @@ public class Item {
         }
 
         //Increment quantityinStock by quantity
-        this.quantityInStock -= amount;
+        this.quantity -= amount;
         return true;
     }
     
@@ -211,6 +211,6 @@ public class Item {
     //Override toString()
     @Override
     public String toString() {
-        return "Item name: "+itemName+"\nUnique ID: "+uniqueID+"\nQuantity in stock: "+quantityInStock+"\nRe-Order level: "+reOrderLevel+"\nRe-Order quantity: "+reOrderQuantity+"\nUnit cost: "+unitCostPrice+" Euro\nSupplier ID Reference: "+supplierRef+"\nIs on order:"+onOrderFlag+"";
+        return "Item name: "+itemName+"\nUnique ID: "+uniqueID+"\nQuantity of item: "+quantity+"\nRe-Order level: "+reOrderLevel+"\nRe-Order quantity: "+reOrderQuantity+"\nUnit cost: "+unitCostPrice+" Euro\nSupplier ID Reference: "+supplierRef+"\nIs on order:"+onOrderFlag+"";
     }
 }
