@@ -1,5 +1,4 @@
 package OrderManagementSystem.Classes;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 /** 
@@ -14,26 +13,31 @@ public class Item {
     private int reOrderLevel;
     private int reOrderQuantity;
     private double unitCostPrice;
-    private int supplierRef;
+    private Supplier supplierRef;
     private boolean onOrderFlag;
 
 
     //Constructors
     //No arguments
+    
     /**
      * An Item constructor with no arguments.
+     * @see zero 0 is not a valid value, change all attributes after using this no argument constructor.
      */
     public Item() {
         //Set Item attributes
-        this.itemName = "An item";
+        this.itemName = "Change name";
         this.uniqueID = 0;
         this.quantityInStock = 0;
         this.reOrderLevel = 0;
         this.reOrderQuantity = 0;
         this.unitCostPrice = 0.00;
-        this.supplierRef = 0;
+        this.supplierRef = null;
         this.onOrderFlag = false;
     }
+
+    //Create static int globalID to generate unique IDs
+    private static int globalID;
 
     //Arguments for all attributes
 
@@ -44,26 +48,29 @@ public class Item {
      * @param reOrderLevel Given reOrderLevel int
      * @param reOrderAmount Given reOrderAmount int
      * @param cost given cost per unit
-     * @param supplierID Given supplier ID(Must already exist in Supplier)
+     * @param supplierRef Given supplier object
      * @param isOnOrder Given onOrder boolean
+     * 
+     * @throws IllegalArgumentExcepion if name is empty or null, any int is below zero, or the given supplier reference is null.
      */
-    public Item(String name, int ID, int quantity, int reOrderLevel, int reOrderAmount, double cost, int supplierID, boolean isOnOrder) {
-        this.itemName = name;
-        this.uniqueID = ID;
-        this.quantityInStock = quantity;
-        this.reOrderLevel = reOrderLevel;
-        this.reOrderQuantity = reOrderAmount;
-        this.unitCostPrice = cost;
-        this.supplierRef = supplierID;
-        this.onOrderFlag = false;
+    public Item(String name, int quantity, int reOrderLevel, int reOrderAmount, double cost, Supplier supplierRef, boolean isOnOrder) {
+        //Set attributes to arguments
+        setName(name);
+        setUniqueID();
+        setStockQuantity(quantity);
+        setReOrderLevel(reOrderLevel);
+        setReOrderQuantity(reOrderAmount);
+        setUnitCostPrice(cost);
+        setSupplierRef(supplierRef);
+        setOnOrder(isOnOrder);
     }
 
     //Getters
     public String getName() {
         return this.itemName;
     }
-    public int getUniqueID() {
-        return this.uniqueID;
+    public void getUniqueID() {
+        this.uniqueID = globalID++;
     }
     public int getQuantityInStock() {
         return this.quantityInStock;
@@ -77,7 +84,7 @@ public class Item {
     public double getUnitCostPrice() {
         return unitCostPrice;
     }
-    public int getSupplierRef() {
+    public Supplier getSupplierRef() {
         return this.supplierRef;
     }
     public boolean isOnOrder() {
@@ -86,31 +93,28 @@ public class Item {
 
 
     //Setter methods
-    public boolean setName(String name) {
+    public void setName(String name) {
         //Validate arguments
         if(name == null) {
-            throw new IllegalArgumentException("Given name must NOT be null.");
+            throw new IllegalArgumentException("Given item name must NOT be null.");
         }
         if(name.isBlank()) {
-            return false;
+            throw new IllegalArgumentException("Given item name must NOT be blank.");
         }
 
         //Set value of itemName to name argument
         this.itemName = name;
-        return true;
     }
 
-    public boolean setUniqueID(int ID) {
-        //Validate Arguments
-        if(ID < 0) {
-            throw new IllegalArgumentException("Given ID must be a positive integer.");
-        }
-
-        //Set uniqueID to ID argument
-        this.uniqueID = ID;
-        return true;
+    /**
+     * Sets a unique ID Automatically.
+     * @return The new ID
+     */
+    private int setUniqueID() {
+        return globalID++;
     }
-    public boolean setStockQuantity(int quantity) {
+
+    public void setStockQuantity(int quantity) {
         //Validate arguments
         if(quantity < 0) {
             throw new IllegalArgumentException("Given quantity must be a positive integer.");
@@ -118,9 +122,9 @@ public class Item {
 
         //Set quantityInStock to quantity
         this.quantityInStock = quantity;
-        return true;
     }
-    public boolean setReOrderLevel(int level) {
+
+    public void setReOrderLevel(int level) {
         //Validate arguments
         if(level < 0) {
             throw new IllegalArgumentException("Given level must be a positive integer.");
@@ -128,9 +132,8 @@ public class Item {
 
         //Set reOrderLevel to level argument
         this.reOrderLevel = level;
-        return true;
     }
-    public boolean setReOrderQuantity(int quantity) {
+    public void setReOrderQuantity(int quantity) {
         //Validate arguments
         if(quantity < 0) {
             throw new IllegalArgumentException("Given quantity must be a positive integer.");
@@ -138,9 +141,8 @@ public class Item {
 
         //Set reOrderQuantity to quantity
         this.reOrderQuantity = quantity;
-        return true;
     }
-    public boolean setUnitCostPrice(double cost) {
+    public void setUnitCostPrice(double cost) {
         if(Double.isNaN(cost)) {
             throw new InputMismatchException("Given cost must be a valid decimal number.");
         }
@@ -150,24 +152,22 @@ public class Item {
 
         //Set unitCostPrice to cost
         this.unitCostPrice = cost;
-        return true;
     }
-    public boolean setSupplierRef(int ref) {
+
+    public void setSupplierRef(Supplier ref) {
         //Validate arguments
-        if(ref <= 0) {
-            throw new IllegalArgumentException("Given ref value must be a positive integer & greater than 0.");
+        if(ref == null) {
+            throw new IllegalArgumentException("Given Supplier object must NOT be null.");
         }
 
         //Set supplierRef to ref
         this.supplierRef = ref;
-        return true;
     }
-    public boolean setOnOrder(boolean onOrder) {
+    public void setOnOrder(boolean onOrder) {
         //No validation required
 
         //Set onOrderFlag global to local onOrder argument
         this.onOrderFlag = onOrder;
-        return true;
     }
 
 
@@ -205,27 +205,8 @@ public class Item {
     }
     
  
-    //static methods
-    public static boolean validateSupplierID(Item item, Item[] items) {
-        //Validate arguments
-        if(item == null) {
-            throw new IllegalArgumentException("Given item must NOT be null.");
-        }
-        if(item.supplierRef == 0) {
-            return false;
-        }
-        if(items == null) {
-            throw new IllegalArgumentException("Given Item array must NOT be null.");
-        }
+    //static methods for entire class
 
-        //Initialise for loop
-        for (int i = 0; i < items.length; i++) {
-            if(item.getSupplierRef() == items[i].getSupplierRef()) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     //Override toString()
     @Override
