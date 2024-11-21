@@ -18,7 +18,7 @@ public class Version1App {
         
         //Create Item[] for Item objects
         Item i1 = new Item();
-        Item i2 = new Item("Shampoo", 1, 6, 20, 30, 24.99, 1, true);
+        Item i2 = new Item("Shampoo", 6, 20, 30, 24.99, 1, true);
         Item i3 = new Item("Conditioner", 2, 24, 40, 30, 21.99, 2, true);
         Item i4 = new Item("Shower Gel", 3, 45, 50, 50, 44.99, 3, false);
         Item i5 = new Item("Aftershave", 4, 65, 80, 60, 34.99, 4, false);
