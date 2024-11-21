@@ -1,10 +1,10 @@
-package Version1;
+package OrderManagementSystem;
 
 import java.time.LocalDate;
 
-import Version1.Classes.Delivery;
-import Version1.Classes.Item;
-import Version1.Classes.Supplier;
+import OrderManagementSystem.Classes.Delivery;
+import OrderManagementSystem.Classes.Item;
+import OrderManagementSystem.Classes.Supplier;
 
 public class Version1App {
     public static void main(String[] args) {
