@@ -42,8 +42,8 @@ public class Item {
     //Arguments for all attributes
 
     /**
+     * An Item class constructor that takes arguments.
      * @param name Given name String
-     * @param ID Given ID number int
      * @param quantity Given quantity int
      * @param reOrderLevel Given reOrderLevel int
      * @param reOrderAmount Given reOrderAmount int

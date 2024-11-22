@@ -1,4 +1,4 @@
-package OrderManagementSystem;
+package OrderManagementSystem.Version1;
 
 import java.time.LocalDate;
 
@@ -18,10 +18,10 @@ public class Version1App {
         
         //Create Item[] for Item objects
         Item i1 = new Item();
-        Item i2 = new Item("Shampoo", 1, 6, 20, 30, 24.99, 1, true);
-        Item i3 = new Item("Conditioner", 2, 24, 40, 30, 21.99, 2, true);
-        Item i4 = new Item("Shower Gel", 3, 45, 50, 50, 44.99, 3, false);
-        Item i5 = new Item("Aftershave", 4, 65, 80, 60, 34.99, 4, false);
+        Item i2 = new Item("Shampoo", 6, 20, 30, 24.99, s1, true);
+        Item i3 = new Item("Conditioner", 24, 40, 30, 21.99, s2, true);
+        Item i4 = new Item("Shower Gel", 45, 50, 50, 44.99, s3, false);
+        Item i5 = new Item("Aftershave", 65, 80, 60, 34.99, s1, false);
         
         //Store Item objects in arrays
         Item[] items1 = {i1, i2};
@@ -29,7 +29,6 @@ public class Version1App {
         
         Delivery d1 = new Delivery(items1, LocalDate.now(), 2);
         Delivery d2 = new Delivery(items1, LocalDate.now(), 12);
-		Delivery d3 = new Delivery(items2, LocalDate.now(), 30);
 		
 		//Print Supplier details using Supplier.toString() for each supplier
         System.out.println(s1.toString());
