@@ -1,6 +1,7 @@
 package OrderManagementSystem.Version1;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import OrderManagementSystem.Classes.Delivery;
 import OrderManagementSystem.Classes.Item;
@@ -9,10 +10,10 @@ import OrderManagementSystem.Classes.Supplier;
 public class Version1App {
     public static void main(String[] args) {
         //Print message
-        System.out.println("This program represents an order management system. This is CA1 of the OOP Module.[]");
+        System.out.println("This program represents an order management system. This is CA1 of the OOP Module.");
 
 
-        Supplier s1 = new Supplier();
+        Supplier s1 = new Supplier("Roisin Mulligan", "122 Lecturers Lane, Dundalk, Co Louth, IE", 450.00, 2345.76);
         Supplier s2 = new Supplier("Cal Woods", "666 Hells Lane Los Angeles", 243.31, 4000.00);
         Supplier s3 = new Supplier("Colm O'Donoghue", "21 Sunset Boulevard California Los Angeles USA", 350.00, 4000.00);
         
@@ -24,7 +25,13 @@ public class Version1App {
         Item i5 = new Item("Aftershave", 65, 80, 60, 34.99, s1, false);
         
         //Store Item objects in arrays
-        Item[] items1 = {i1, i2};
+        ArrayList<Item> items1 = new ArrayList<Item>(2);
+
+        //Add to ArrayList items1
+        items1.add(i1);
+        items1.add(i2);
+
+        //Repeat process for Delivery
         Item[] items2 = {i3, i4, i5};
         
         Delivery d1 = new Delivery(items1, LocalDate.now(), 2);
