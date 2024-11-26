@@ -1,6 +1,7 @@
 package OrderManagementSystem.Classes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Template for all Delivery objects.
@@ -8,7 +9,7 @@ import java.time.LocalDate;
 **/
 public class Delivery {
     //Declare attributes
-    private Item[] itemRef;
+    private ArrayList<Item> itemRef;
     private LocalDate date;
     private int quantity;
 
@@ -16,21 +17,31 @@ public class Delivery {
 
     //Constructors
     //No argument
+    /**
+     * A no argument constructor for the Delivery class.
+     */
     public Delivery() {
         //Set attribute values
-        this.itemRef = new Item[0];
+        this.itemRef = new ArrayList<Item>(0);
         setDate(LocalDate.now());
-        setQuantityInternal();
+        setQuantity();
     }
     //Arguments for all attributes
-    public Delivery(Item[] items, LocalDate date, int quantity) {
-        this.itemRef = items;
-        this.date = date;
-        this.quantity = quantity;
+    /**
+     * Sets new Delivery object attributes.
+     * @param items An ArrayList<Item>
+     * @param date A LocalDate object
+     * 
+     * @see Quantity quantity of items is set automatically to items size
+     */
+    public Delivery(ArrayList<Item> items, LocalDate date) {
+        setItemRef(items);
+        setDate(date);
+        setQuantity();
     }
 
     //Getter methods
-    public Item[] getItemRef() {
+    public ArrayList<Item> getItemRef() {
         return this.itemRef;
     }
     public LocalDate getDate() {
@@ -42,33 +53,44 @@ public class Delivery {
 
 
     //Setter methods
-    public boolean setItemRef(Item[] items) {
+    /**
+     * Overwrites ItemRef arraylist<Item> with new arraylist<Item>.
+     * @param items An ArrayList<Item>
+     * @return 
+     * @throws IllegalArgumentException If items array is null
+     */
+    public boolean setItemRef(ArrayList<Item> items) {
+        //Argument validation
+        if(items == null)
+            throw new IllegalArgumentException("Given ArrayList<Item> must NOT be null.");
+
         //Overwrite itemRef array
         this.itemRef = items;
-        setQuantityInternal();
+        setQuantity();
         return true;
     }
     public boolean setDate(LocalDate date) {
+        //Argument validation
+        if(date == null)
+            throw new IllegalArgumentException("");
+
+        if(date.isBefore(LocalDate.now()))
+            throw new IllegalArgumentException("Given date must NOT be before today.");
+
         this.date = date;
         return true;
     }
-    private boolean setQuantityInternal() {
-        //Validate attributes
-        if(this.itemRef == null) {
-            return false;
-        }
-        this.quantity = this.itemRef.length;
-        return true;
-    }
-    public boolean setQuantity(int quantity) {
-        //Validate attributes
-        if(this.itemRef == null) {
-            throw new IllegalArgumentException("Given quantity must NOT be null.");
-        }
-        if(this.itemRef.length == 0) {
-            return false;
-        }
 
+    public boolean setQuantity() {
+        //Validate attributes
+        if(this.itemRef == null) {
+            throw new IllegalArgumentException("There must be items in itemRef to set quantity.");
+        }
+        if(this.itemRef.size() == 0) {
+            return false;
+        }
+        
+        this.quantity = this.itemRef.size();
         return true;
     }
     
@@ -79,13 +101,10 @@ public class Delivery {
     	double total = 0.00;
     	
     	//Set total to total + each Item unit cost price
-    	for(int i = 0; i < itemRef.length; i++) {
-    	total += itemRef[i].getUnitCostPrice();
+    	for(int i = 0; i < itemRef.size(); i++) {
+    	total += this.itemRef.get(i).getUnitCostPrice() * this.itemRef.get(i).getQuantityInStock();
     	}
-    	
-    	//Set total to total * quantity
-    	total *= getQuantity();
-    	
+
     	return total;
     }
 }

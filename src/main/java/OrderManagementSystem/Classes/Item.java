@@ -112,7 +112,6 @@ public class Item {
     private void setUniqueID() {
         this.uniqueID = globalID++;
     }
-
     public void setStockQuantity(int quantity) {
         //Validate arguments
         if(quantity < 0) {
