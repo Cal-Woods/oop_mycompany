@@ -52,7 +52,7 @@ public class Item {
      * 
      * @throws IllegalArgumentExcepion if name is empty or null, any int is below zero, or the given supplier reference is null.
      */
-    public Item(String name, int reOrderLevel, int reOrderAmount, double cost, Supplier supplierRef, boolean isOnOrder) {
+    public Item(String name, int quantity, int reOrderLevel, int reOrderAmount, double cost, Supplier supplierRef, boolean isOnOrder) {
         //Set attributes to arguments
         setName(name);
         setUniqueID();

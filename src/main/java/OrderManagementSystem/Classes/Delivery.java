@@ -101,8 +101,8 @@ public class Delivery {
     	double total = 0.00;
     	
     	//Set total to total + each Item unit cost price
-    	for(int i = 0; i < itemRef.size(); i++) {
-    	total = total + (this.itemRef.get(i).getUnitCostPrice() * this.itemRef.get(i).getQuantityInStock());
+    	for(int i = 0; i < getQuantity(); i++) {
+    	    total += this.getItemRef().get(i).getUnitCostPrice() * this.getItemRef().get(i).getQuantityInStock();
     	}
 
     	return total;
