@@ -17,7 +17,7 @@ public class Version1App {
         Supplier s2 = new Supplier("Cal Woods", "666 Hells Lane Los Angeles", 243.31, 4000.00);
         Supplier s3 = new Supplier("Colm O'Donoghue", "21 Sunset Boulevard California Los Angeles USA", 350.00, 4000.00);
         
-        //Create Item[] for Item objects
+        //Create set of Item objects
         Item i1 = new Item("Action Man", 4, 7, 17, 32.99, new Supplier(), true);
         Item i2 = new Item("Shampoo", 24, 6, 20, 24.99, new Supplier("Cal Woods", "12 Nunya Beeswax Drive, Co Louth, Ireland", 3000.00, 6000.00), true);
         Item i3 = new Item("Conditioner", 56, 2, 24, 21.99, new Supplier("Aaron Lee", "111 Gambler's Rest, New Vegas, Mojave Desert, Nevada, USA", 1243.76, 3499.99), true);
@@ -54,7 +54,6 @@ public class Version1App {
         
         //Print s3.getAmountOwed
         System.out.println("The total amount owed to supplier 3 is: "+s3.getAmountOwed()+" euro. After delivery 2 is complete, the amount owed to supplier 3 goes up to "+(s3.getAmountOwed()+d2.calculateDeliveryCost())+" euro.");
-        
         //End of program
     }
 }

@@ -10,9 +10,15 @@ public class SupOrder {
     private int quantity;
     private int uniqueID;
 
+    //Declare static IDSeed
+    private static int idSeed = 0;
+
     //Create no argument constructor
     public SupOrder() {
-        
+        this.itemRef = new ArrayList<Item>(0);
+        this.date = LocalDate.now();
+        this.quantity = getItems().size();
+        this.
     }
 
     //A constructor that takes arguments
@@ -37,10 +43,30 @@ public class SupOrder {
 
     //Setter methods
     /**
-     * Overwrites SupOrder ArrayList<Item> itemRef
-     * @param items An ArrayList<Item>
+     * Overwrites SupOrder ArrayList<Item> itemRef with new ArrayList<Item>
+     * @param items An ArrayList<Item> 
      */
     public void setItemRef(ArrayList<Item> items) {
+        //Validation
+        if(items == null)
+            throw new IllegalArgumentException("Given ArrayList<Item> must NOT be null.");
 
+        this.itemRef = items;
+    }
+    public void setDate(LocalDate date) {
+        //Validation
+        if(date == null)
+            throw new IllegalArgumentException("Given date must NOT be null.");
+        if(date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Given date must be the current local date or after, cannot be before current local date.");
+        }
+
+        this.date = date;
+    }
+    public void setQuantity() {
+        this.quantity = getItems().size();
+    }
+    public void setUniqueID() {
+        this.uniqueID = uniqueID++;
     }
 }
