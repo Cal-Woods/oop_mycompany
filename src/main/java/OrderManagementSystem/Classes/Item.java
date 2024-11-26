@@ -81,7 +81,7 @@ public class Item {
         return this.reOrderQuantity;
     }
     public double getUnitCostPrice() {
-        return unitCostPrice;
+        return this.unitCostPrice;
     }
     public Supplier getSupplierRef() {
         return this.supplierRef;

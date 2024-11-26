@@ -1,6 +1,7 @@
-package OrderManagementSystem;
+package OrderManagementSystem.Version1;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import OrderManagementSystem.Classes.Delivery;
 import OrderManagementSystem.Classes.Item;
@@ -18,18 +19,26 @@ public class Version1App {
         
         //Create Item[] for Item objects
         Item i1 = new Item();
-        Item i2 = new Item("Shampoo", 6, 20, 30, 24.99, 1, true);
-        Item i3 = new Item("Conditioner", 2, 24, 40, 30, 21.99, 2, true);
-        Item i4 = new Item("Shower Gel", 3, 45, 50, 50, 44.99, 3, false);
-        Item i5 = new Item("Aftershave", 4, 65, 80, 60, 34.99, 4, false);
+        Item i2 = new Item("Shampoo", 6, 20, 24.99, new Supplier("Cal Woods", "12 Nunya Beeswax Drive, Co Louth, Ireland", 3000.00, 6000.00), true);
+        Item i3 = new Item("Conditioner", 2, 24, 21.99, new Supplier("Aaron Lee", "111 Gambler's Rest, New Vegas, Mojave Desert, Nevada, USA", 1243.76, 3499.99), true);
+        Item i4 = new Item("Shower Gel", 3, 45, 44.99, new Supplier(), false);
+        Item i5 = new Item("Aftershave", 4, 65, 34.99, new Supplier(), false);
         
         //Store Item objects in arrays
-        Item[] items1 = {i1, i2};
-        Item[] items2 = {i3, i4, i5};
+        ArrayList<Item> items1 = new ArrayList<Item>();
+        //Add i1, i2 Item objects to items1 ArrayList
+        items1.add(i1);
+        items1.add(i2);
+
+        //Repeat process with items2 ArrayList for i3, i4, i5
+        ArrayList<Item> items2 = new ArrayList<Item>();
+        items2.add(i3);
+        items2.add(i4);
+        items2.add(i5);
         
-        Delivery d1 = new Delivery(items1, LocalDate.now(), 2);
-        Delivery d2 = new Delivery(items1, LocalDate.now(), 12);
-		Delivery d3 = new Delivery(items2, LocalDate.now(), 30);
+        Delivery d1 = new Delivery(items1, LocalDate.now());
+        Delivery d2 = new Delivery(items1, LocalDate.now());
+		Delivery d3 = new Delivery(items2, LocalDate.now());
 		
 		//Print Supplier details using Supplier.toString() for each supplier
         System.out.println(s1.toString());

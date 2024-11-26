@@ -102,9 +102,18 @@ public class Delivery {
     	
     	//Set total to total + each Item unit cost price
     	for(int i = 0; i < itemRef.size(); i++) {
-    	total += this.itemRef.get(i).getUnitCostPrice() * this.itemRef.get(i).getQuantityInStock();
+    	total = total + (this.itemRef.get(i).getUnitCostPrice() * this.itemRef.get(i).getQuantityInStock());
     	}
 
     	return total;
     }
+    /*TODO:Create a method to decrease global item quantity from Stock class
+    public boolean finishedDelivery() {
+        //Validate that itemRef ArrayList<Item> has at least one Item object
+        if(this.getQuantity() == 0)
+            return false;
+
+
+        
+    }*/
 }
