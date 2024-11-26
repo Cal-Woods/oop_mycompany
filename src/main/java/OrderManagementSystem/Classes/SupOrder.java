@@ -14,15 +14,22 @@ public class SupOrder {
     private static int idSeed = 0;
 
     //Create no argument constructor
+    /**
+     * Constructor with no arguments, generates default values for attributes, change IMMEDIATELY!
+     */
     public SupOrder() {
         this.itemRef = new ArrayList<Item>(0);
-        this.date = LocalDate.now();
+        this.date = LocalDate.EPOCH;
         this.quantity = getItems().size();
-        this.
+        this.uniqueID = 0;
     }
 
     //A constructor that takes arguments
     public SupOrder(ArrayList<Item> items, LocalDate date) {
+        setItemRef(items);
+        setDate(date);
+        setQuantity();
+        setUniqueID();
 
     }
 
