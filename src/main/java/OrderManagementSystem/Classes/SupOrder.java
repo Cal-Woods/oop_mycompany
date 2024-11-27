@@ -25,12 +25,20 @@ public class SupOrder {
     }
 
     //A constructor that takes arguments
+    /**
+     * An arguments constructor.
+     * @param items An ArrayList of Item objects
+     * @param date A LocalDate object
+     * 
+     * @see This This constructor uses various methods to validate incoming data before setting attributes.
+     * @see Various Various validation methods throw IllegalArgumentException.
+     */
     public SupOrder(ArrayList<Item> items, LocalDate date) {
+       //Instance methods to validate data before setting attributes
         setItemRef(items);
         setDate(date);
         setQuantity();
         setUniqueID();
-
     }
 
     //Getter methods

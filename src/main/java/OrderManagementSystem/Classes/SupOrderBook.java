@@ -12,19 +12,41 @@ public class SupOrderBook {
     }
 
     //Mutator methods
-    public void add(SupOrder order) {
+    /**
+     * Adds a SupOrder object to instance ArrayList<Item> object
+     * @param order A SupOrder object
+     * 
+     * @see 
+     * 
+     * @throws IllegalArgumentException If given SupOrder object is null.
+     * @return int 0 if method is successful, otherwise, throws IllegalArgumentException
+     */
+    public int add(SupOrder order) {
         //Validation
         if(order == null)
             throw new IllegalArgumentException("Given SupOrder array must NOT be null.");
 
         //Use ArrayList add() method to add order to orders
         this.orders.add(order);
+        return 0;
     }
-    public void add(ArrayList<SupOrder> orders) {
+
+    /**
+     * Adds all items from a given ArrayList<SupOrder>
+     * @param orders An ArrayList<SupOrder>
+     * 
+     * @throws IllegalArgumentException If ArrayList<SupOrder> is null
+     * 
+     * @return Int 0 if method successful, otherwise, -1
+     */
+    public int add(ArrayList<SupOrder> orders) {
         //Validation
         if(orders == null)
             throw new IllegalArgumentException("Given ArrayList must NOT be null.");
-        
+        if(orders.isEmpty()) {
+            return -1;
+        }
         this.orders.addAll(orders);
+        return 0;
     }
 }
