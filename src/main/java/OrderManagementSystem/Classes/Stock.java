@@ -53,7 +53,7 @@ public class Stock {
         Item itemObj = new Item();
 
         //Initialise for loop to find dearest Item object in this.products ArrayList<Item>
-        for (int i = 0; i < this.getProducts().size()-1; i++) {
+        for (int i = 0; i < this.getProducts().size(); i++) {
             //Check if current element is larger dearest
             if(getProducts().get(i).getUnitCostPrice() > itemObj.getUnitCostPrice()) {
                 itemObj = getProducts().get(i);
