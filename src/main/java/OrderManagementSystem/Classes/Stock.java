@@ -49,20 +49,21 @@ public class Stock {
     }
 
     public String findDearest(Item item) {
-        //Declare variables
-        double dearest = 0.00;
-        String name = "";
+        //Declare Item itemObj to track current object
+        Item itemObj = new Item();
 
         //Initialise for loop to find dearest Item object in this.products ArrayList<Item>
         for (int i = 0; i < this.getProducts().size()-1; i++) {
             //Check if current element is larger dearest
-            if(getProducts().get(i).getUnitCostPrice() > dearest) {
-                dearest = getProducts().get(i).getUnitCostPrice();
-                name = getProducts().get(i).getName();
+            if(getProducts().get(i).getUnitCostPrice() > itemObj.getUnitCostPrice()) {
+                itemObj = getProducts().get(i);
             }
         }
 
+        //Check if itemObj is valid
+        if(itemObj.getUnitCostPrice() == 0.00)
+            return "";
 
-        return "";
+            return itemObj.getName();
     }
 }
