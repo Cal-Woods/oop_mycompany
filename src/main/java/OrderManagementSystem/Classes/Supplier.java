@@ -17,8 +17,6 @@ public class Supplier {
     //Declare a static variable, ArrayList<Supplier> suppliers
     private static ArrayList<Supplier> suppliers = new ArrayList<Supplier>(0);
 
-    //Declare a static variable, 
-
 
     //Constructors
     public Supplier() {
@@ -60,7 +58,10 @@ public class Supplier {
     public double getCreditLimit() {
         return creditLimit;
     }
-
+    public static ArrayList<Supplier> getSuppliers() {
+        return suppliers;
+    }
+    
     //Setter/mutator methods
     public boolean setName(String name) {
         //Validate arguments

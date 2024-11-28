@@ -20,7 +20,8 @@ public class Version2App {
     stock.add(new Item("Intel Core i9 13900X", 12, 40, 30, 10500.00, new Supplier("David O'Keefe", "7 Bellfield, Dundalk, Co Louth, Ireland", 12500.00, 30000.00), true));
     stock.add(new Item("CPU fan", 200, 90, 110, 59.99, new Supplier("Michelle Graham", "14 Cavanagarden Ballyshannon, Ballyshannon, Co. Donegal, Ireland", 6500.00, 32000.00), false));
     stock.add(new Item("12GB 2.0 USB-C", 31, 75, 75, 18.00, new Supplier("Amanda Clancy", "1 Georges Quay Dundalk, Dundalk, Co Louth, Ireland", 346.00, 2400.00), true));
-
-    
+    for (int i = 0; i < Supplier.getSuppliers().size(); i++) {
+        System.out.println(Supplier.getSuppliers().get(i).getName());
+    }
     }
 }
