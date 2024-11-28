@@ -58,10 +58,12 @@ public class Supplier {
     public double getCreditLimit() {
         return creditLimit;
     }
+
+    //Create method to return ArrayList<Supplier>
     public static ArrayList<Supplier> getSuppliers() {
         return suppliers;
     }
-    
+
     //Setter/mutator methods
     public boolean setName(String name) {
         //Validate arguments
@@ -144,14 +146,21 @@ public class Supplier {
         return true;
     }
 
+    //Create static methods for searching ArrayList suppliers
     /**
-     * Adds Supplier object to static suppliers.
+     * Adds this Supplier object to static suppliers.
      */
     private void addSupplier() {
         //Add this object to suppliers
         suppliers.add(this);
     }
 
+
+    //Create method to sort private static ArrayList<Item> suppliers alphabetically by supplierName
+    public static boolean sortSuppliers() {
+        getSuppliers().sort( (a, b) -> { return 1*a.getName().compareTo(b.getName());} );
+        return true;
+    }
     //Override toString()
     @Override
     public String toString() {
