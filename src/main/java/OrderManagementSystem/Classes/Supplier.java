@@ -1,7 +1,12 @@
 package OrderManagementSystem.Classes;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+/**
+* Stores details for individual suppliers and contains methods for manipulating attributes.
+* @see Note An object of this class does NOT need to be stored in a variable, as it is automatically stored in a static ArrayList Supplier.suppliers.
+*/
 public class Supplier {
     //Attributes
     private String supplierName;
@@ -9,18 +14,37 @@ public class Supplier {
     private double amountOwed;
     private double creditLimit;
 
+    //Declare a static variable, ArrayList<Supplier> suppliers
+    private static ArrayList<Supplier> suppliers = new ArrayList<Supplier>(0);
+
+    //Declare a static variable, 
+
+
     //Constructors
     public Supplier() {
         this.supplierName = "John Doe";
         this.supplierAddress = "No address given";
         this.amountOwed = 0.00;
         this.creditLimit = 0.00;
+
+        addSupplier();
     }
+
+    /**
+     * An argument constructor
+     * @param name The String name of the supplier
+     * @param address The String address of the supplier
+     * @param amountOwed The double amountOwed to the supplier
+     * @param creditLimit The double creditLimit that represents how much can be owed to a supplier
+     */
     public Supplier(String name, String address, double amountOwed, double creditLimit) {
-        this.supplierName = name;
-        this.supplierAddress = address;
-        this.amountOwed = amountOwed;
-        this.creditLimit = creditLimit;
+        setName(name);
+        setAddress(address);
+        setAmountOwed(amountOwed);
+        setCreditLimit(creditLimit);
+
+        //Method to add Supplier object to static ArrayList<Supplier> suppliers
+        addSupplier();
     }
 
     //Getter methods
@@ -46,8 +70,8 @@ public class Supplier {
         }
         if(name.isBlank()) {
             return false;
-
         }
+
         //Set supplierName to given name
         this.supplierName = name;
         return true;
@@ -117,6 +141,14 @@ public class Supplier {
         //Increase amountOwed by amount argument
         amountOwed -= amount;
         return true;
+    }
+
+    /**
+     * Adds Supplier object to static suppliers.
+     */
+    private void addSupplier() {
+        //Add this object to suppliers
+        suppliers.add(this);
     }
 
     //Override toString()
