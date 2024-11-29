@@ -34,27 +34,6 @@ public class SupDeliveries {
      * @param day A three character String, containing a case-insensitive abbreviated day. E.g. "mon" or "THU" or "SaT"
      * @return 
      */
-    public ArrayList<Delivery> findAllDeliveries(String day) {
-        //Validation
-        if(getDeliveries().size() == 0)
-            return new ArrayList<Delivery>();
-
-        //Declare ArrayList<Delivery> deliveries
-        ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
-
-
-        //Initialise for loop to iterate through ArrayList<Delivery>
-        for (int i = 0; i < getDeliveries().size(); i++) {
-            //Compare Delivery object date day of week as String, to 
-            if(getDeliveries().get(i).getDate().getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH).equalsIgnoreCase(day)) {
-                //Store current Delivery object in deliveries
-                deliveries.add(getDeliveries().get(i));
-            }
-        }
-        
-        return deliveries;
-    }
-
     public ArrayList<Delivery> findAllDeliveries(LocalDate day) {
         //Validation
         if(getDeliveries().size() == 0)
@@ -73,6 +52,31 @@ public class SupDeliveries {
             }
         }
         
+        return deliveries;
+    }
+
+    public ArrayList<Delivery> findAllDeliveries(String itemName) {
+        //Validation
+        if(itemName == null)
+            throw new IllegalArgumentException("Given Item object must NOT be null.");
+
+        if(itemName.isBlank())
+            return new ArrayList<Delivery>();
+
+        if(getDeliveries().size() == 0)
+            return new ArrayList<Delivery>();
+
+
+        //Declare ArrayList<Delivery> deliveries
+        ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
+
+        //Initialise for loop to iterate through ArrayList<Delivery>
+        for (int i = 0; i < getDeliveries().size(); i++) {
+            //Check if current Delivery Item matches given Item object
+            if(getDeliveries().get(i).getItemRef().getName().equalsIgnoreCase(itemName)) {
+                deliveries.add(getDeliveries().get(i));
+            }
+        }
         return deliveries;
     }
 }

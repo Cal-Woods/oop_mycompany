@@ -9,7 +9,7 @@ import java.util.ArrayList;
 **/
 public class Delivery {
     //Declare attributes
-    private ArrayList<Item> itemRef;
+    private Item itemRef;
     private LocalDate date;
     private int quantity;
 
@@ -22,7 +22,7 @@ public class Delivery {
      */
     public Delivery() {
         //Set attribute values
-        this.itemRef = new ArrayList<Item>(0);
+        setItemRef(new Item());
         setDate(LocalDate.now());
         setQuantity();
     }
@@ -34,14 +34,14 @@ public class Delivery {
      * 
      * @see Quantity quantity of items is set automatically to items size
      */
-    public Delivery(ArrayList<Item> items, LocalDate date) {
-        setItemRef(items);
+    public Delivery(Item item, LocalDate date) {
+        setItemRef(item);
         setDate(date);
         setQuantity();
     }
 
     //Getter methods
-    public ArrayList<Item> getItemRef() {
+    public Item getItemRef() {
         return this.itemRef;
     }
     public LocalDate getDate() {
@@ -54,18 +54,18 @@ public class Delivery {
 
     //Setter methods
     /**
-     * Overwrites ItemRef arraylist<Item> with new arraylist<Item>.
-     * @param items An ArrayList<Item>
-     * @return 
+     * Overwrites ItemRef Item with new Item
+     * @param item An Item object
+     * @return A boolean indicating operation success
      * @throws IllegalArgumentException If items array is null
      */
-    public boolean setItemRef(ArrayList<Item> items) {
+    public boolean setItemRef(Item item) {
         //Argument validation
-        if(items == null)
-            throw new IllegalArgumentException("Given ArrayList<Item> must NOT be null.");
+        if(item == null)
+            throw new IllegalArgumentException("Given Item object must NOT be null.");
 
         //Overwrite itemRef array
-        this.itemRef = items;
+        this.itemRef = item;
         setQuantity();
         return true;
     }
@@ -86,25 +86,14 @@ public class Delivery {
         if(this.itemRef == null) {
             throw new IllegalArgumentException("There must be items in itemRef to set quantity.");
         }
-        if(this.itemRef.size() == 0) {
-            return false;
-        }
-        
-        this.quantity = this.itemRef.size();
+
+        this.quantity = this.itemRef.getQuantityInStock();
         return true;
     }
     
     //Mutator methods
     //Calculate Delivery cost
     public double calculateDeliveryCost() {
-    	//Create total double variable
-    	double total = 0.00;
-    	
-    	//Set total to total + each Item unit cost price
-    	for(int i = 0; i < getQuantity(); i++) {
-    	    total += this.getItemRef().get(i).getUnitCostPrice() * this.getItemRef().get(i).getQuantityInStock();
-    	}
-
-    	return total;
+    	return this.itemRef.getUnitCostPrice() * this.itemRef.getQuantityInStock();
     }
 }
