@@ -74,6 +74,8 @@ public class SupDeliveries {
         for (int i = 0; i < getDeliveries().size(); i++) {
             //Check if current Delivery Item matches given Item object
             if(getDeliveries().get(i).getItemRef().getName().equalsIgnoreCase(itemName)) {
+                
+                //Add matching item to deliveries method ArrayList<Delivery>
                 deliveries.add(getDeliveries().get(i));
             }
         }
