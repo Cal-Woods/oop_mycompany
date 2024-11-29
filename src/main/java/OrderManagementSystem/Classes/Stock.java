@@ -96,5 +96,17 @@ public class Stock {
         return cheapestItem;
     }
 
-    
+    public ArrayList<Item> createOrders() {
+        //Validation
+        if(this.getProducts().size() == 0)
+            return new ArrayList<Item>(0);
+
+        //Declare ArrayList<Item> ordersForSuppliers to hold products that need to be ordered
+        ArrayList<Item> ordersforSuppliers = new ArrayList<Item>(0);
+
+        //Initialise for loop
+        for (int i = 0; i < this.getProducts().size(); i++) {
+            
+        }
+    }
 }
