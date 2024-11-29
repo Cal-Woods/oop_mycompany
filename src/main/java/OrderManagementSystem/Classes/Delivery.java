@@ -107,13 +107,4 @@ public class Delivery {
 
     	return total;
     }
-    /*TODO:Create a method to decrease global item quantity from Stock class
-    public boolean finishedDelivery() {
-        //Validate that itemRef ArrayList<Item> has at least one Item object
-        if(this.getQuantity() == 0)
-            return false;
-
-
-        
-    }*/
 }
