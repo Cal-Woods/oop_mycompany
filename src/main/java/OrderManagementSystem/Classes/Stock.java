@@ -40,7 +40,7 @@ public class Stock {
         //Initialise for loop to search ArrayList<Item> products instance variable for given itemName
         for (int i = 0; i < getProducts().size(); i++) {
             //Check if Item 
-            if(getProducts().get(i).getName().equals(itemName)) {
+            if(getProducts().get(i).getName().equalsIgnoreCase(itemName)) {
                 return getProducts().get(i);
             }
         }
@@ -48,22 +48,53 @@ public class Stock {
         return new Item();
     }
 
-    public String findDearest(Item item) {
-        //Declare Item itemObj to track current object
-        Item itemObj = new Item();
+    /**
+     * Searches Stock.ArrayList<Item> products for the dearest Item.
+     * @param item An Item object to check against the ArrayList<Item> products
+     * 
+     * @throws IllegalArgumentException If Item is null
+     * @return 
+     */
+    public String findDearest() {
+        //Validate size() of products
+        if(this.getProducts().size() == 0)
+            return "";
+
+        //Declare String dearestItem to track current object
+        Item dearestItem = new Item();
 
         //Initialise for loop to find dearest Item object in this.products ArrayList<Item>
         for (int i = 0; i < this.getProducts().size(); i++) {
             //Check if current element is larger dearest
-            if(getProducts().get(i).getUnitCostPrice() > itemObj.getUnitCostPrice()) {
-                itemObj = getProducts().get(i);
+            if(getProducts().get(i).getUnitCostPrice() > dearestItem.getUnitCostPrice()) {
+                dearestItem = getProducts().get(i);
             }
         }
 
-        //Check if itemObj is valid
-        if(itemObj.getUnitCostPrice() == 0.00)
-            return "";
 
-            return itemObj.getName();
+        return dearestItem.getName();
     }
+
+    /**
+     * Finds the cheapest cost of an Item object in products
+     * @return Item cheapestItem
+     */
+    public Item findCheapest() {
+        //Validate size() of products
+        if(this.getProducts().size() == 0)
+            return null;
+        //Declare Item cheapestItem to track current object
+        Item cheapestItem = this.getProducts().get(0);
+
+        //Initialise for loop to find dearest Item object in this.products ArrayList<Item>
+        for (int i = 0; i < this.getProducts().size(); i++) {
+            //Check if current element is larger dearest
+            if(getProducts().get(i).getUnitCostPrice() < cheapestItem.getUnitCostPrice()) {
+                cheapestItem = getProducts().get(i);
+            }
+        }
+        return cheapestItem;
+    }
+
+    
 }
