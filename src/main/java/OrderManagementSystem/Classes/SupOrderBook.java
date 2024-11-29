@@ -16,8 +16,6 @@ public class SupOrderBook {
      * Adds a SupOrder object to instance ArrayList<Item> object
      * @param order A SupOrder object
      * 
-     * @see 
-     * 
      * @throws IllegalArgumentException If given SupOrder object is null.
      * @return int 0 if method is successful, otherwise, throws IllegalArgumentException
      */
@@ -43,9 +41,9 @@ public class SupOrderBook {
         //Validation
         if(orders == null)
             throw new IllegalArgumentException("Given ArrayList must NOT be null.");
-        if(orders.isEmpty()) {
+        if(orders.isEmpty())
             return -1;
-        }
+            
         this.orders.addAll(orders);
         return 0;
     }
