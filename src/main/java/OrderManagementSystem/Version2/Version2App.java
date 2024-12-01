@@ -38,28 +38,53 @@ public class Version2App {
     String name = sc.nextLine();
     int quantity = sc.nextInt();
     
+    //Repeatedly check if Item with given name is NOT in stock
+    while(stock.findItem(name) == null) {
+        //Print prompt
+        System.out.print("Given name could not be found in stock. Please re-enter name: ");
+        //Set name to user input
+        name = sc.nextLine();
+
+        //Clear Scanner buffer
+        sc.nextLine();
+
+    }
+    System.out.print("Enter quantity: ");
+    quantity = sc.nextInt();
+
     //Create Delivery object delivery1
     Delivery delivery1 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
 
     //Repeat process
-    System.out.print("\nEnter the name of an Item to find and a quantity on the next line: ");
-    name = sc.nextLine();
+    while(stock.findItem(name) == null) {
+        //Print prompt
+        System.out.print("Given name could not be found in stock. Please re-enter name: ");
+        //Set name to user input
+        name = sc.nextLine();
+    
+        //Clear Scanner buffer
+        sc.nextLine();
+    }
 
-    //Clear Scanner buffer
-    sc.nextLine();
-
+    System.out.print("Enter quantity: ");
     quantity = sc.nextInt();
-    
-    
+
     Delivery delivery2 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
     
     System.out.print("Enter the name of an Item to find and a quantity on the next line: ");
-    name = sc.nextLine();
-
-    sc.nextLine();
-
+    
+    while(stock.findItem(name) == null) {
+        //Print prompt
+        System.out.print("Given name could not be found in stock. Please re-enter name: ");
+        //Set name to user input
+        name = sc.nextLine();
+    
+        //Clear Scanner buffer
+        sc.nextLine();
+    }
     quantity = sc.nextInt();
-    Delivery delivery3 = new Delivery(stock.findItem(sc.nextLine()), sc.nextInt(), LocalDate.now());
+
+    Delivery delivery3 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
 
     //Print blank line
     System.out.println();
