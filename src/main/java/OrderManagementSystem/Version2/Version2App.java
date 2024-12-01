@@ -1,6 +1,7 @@
 package OrderManagementSystem.Version2;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import OrderManagementSystem.Classes.*;
@@ -12,7 +13,8 @@ public class Version2App {
 
     //Print message
     System.out.println("This program represents an order management system. The first thing the program does is create a Stock class object. Then, the stock will have seven Item objects added to it.");
-    //Declare Stock() object
+    
+    //Declare Stock object
     Stock stock = new Stock();
 
     //Add 7 Item objects to stock
@@ -25,12 +27,42 @@ public class Version2App {
     stock.add(new Item("12GB 2.0 USB-C", 31, 75, 75, 18.00, new Supplier("Amanda Clancy", "1 Georges Quay Dundalk, Dundalk, Co Louth, Ireland", 346.00, 2400.00), true));
 
     //Print message
-    System.out.println("\nNow, The program creates three Delivery objects to place into a SupDeliveries ArrayList.");
+    System.out.println("\nNow, The program creates three Delivery objects to place into a SupDeliveries ArrayList.\n");
+    System.out.print("Enter the name of each Item you want to add to each delivery. If it is in stock, it will be added. Otherwise, Item cannot be added. This wil occur three times.\n");
 
     //Declare three Delivery objects
-    Delivery delivery1 = new Delivery(stock.findItem("NVIDIA Gtx 1080TI"), 30, LocalDate.of(2025, 7, 6));
-    Delivery delivery2 = new Delivery(stock.findItem(stock.findDearest()), 20, LocalDate.now());
-    Delivery delivery3 = new Delivery(stock.findCheapest(), 26, LocalDate.MAX);
+    //Print prompt
+    System.out.print("Enter the name of an Item to find and a quantity on the next line: ");
+
+    //Get user inputs name, quantity and store
+    String name = sc.nextLine();
+    int quantity = sc.nextInt();
+    
+    //Create Delivery object delivery1
+    Delivery delivery1 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
+
+    //Repeat process
+    System.out.print("\nEnter the name of an Item to find and a quantity on the next line: ");
+    name = sc.nextLine();
+
+    //Clear Scanner buffer
+    sc.nextLine();
+
+    quantity = sc.nextInt();
+    
+    
+    Delivery delivery2 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
+    
+    System.out.print("Enter the name of an Item to find and a quantity on the next line: ");
+    name = sc.nextLine();
+
+    sc.nextLine();
+
+    quantity = sc.nextInt();
+    Delivery delivery3 = new Delivery(stock.findItem(sc.nextLine()), sc.nextInt(), LocalDate.now());
+
+    //Print blank line
+    System.out.println();
 
     //Create SupDeliveries object & add three Delivery objects
     SupDeliveries deliveries = new SupDeliveries();
@@ -40,8 +72,47 @@ public class Version2App {
     deliveries.addDelivery(delivery2);
     deliveries.addDelivery(delivery3);
 
+    //Check if deliveries object has invalid data with checkDeleteDeliveries() method and purge deliveries of invalid data
+    if(checkDeleteDeliveries(deliveries)) {
+    }
+
+
+    //Check if any deliveries are invalid using checkDeliveries() app method
     //Test deliveries contains three Delivery objects
     deliveries.displayAllDeliveries();
+    }
+
     
+    //Create helper methods
+    /**
+     * Checks if any Supplier deliveries contain Item objects that have bad data and deletes those objects from given deliveries.
+     * @param deliveries Given SupDeliveries object
+     * @return A boolean, false if all Item objects within deliveries are valid, or if deliveries has 0 Item objects. True if any Item objects are not valid.
+     * 
+     * @throws IllegalArgumentException If given SupDeliveries object is null.
+     */
+    private static boolean checkDeleteDeliveries(SupDeliveries deliveries) {
+        //Validation
+        if(deliveries == null)
+            throw new IllegalArgumentException("Given SupDeliveries object must NOT be null.");
+        if(deliveries.getDeliveries().size() == 0)
+            return true;
+
+        //Declare boolean problem
+        boolean problem = false;
+
+        //Initialise for loop to iterate over given deliveries
+        for (int i = 0; i < deliveries.getDeliveries().size(); i++) {
+            //Check if current element of given deliveries object has a bad item name of 'change name'
+            if(deliveries.getDeliveries().get(i).getItemRef().getName().equalsIgnoreCase("change name")) {
+                //Remove current delivery from list
+                deliveries.getDeliveries().remove(i);
+
+                //Set problem to true
+                problem = true;
+            }
+        }
+
+        return problem;
     }
 }

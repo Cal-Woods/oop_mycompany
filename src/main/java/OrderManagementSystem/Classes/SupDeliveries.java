@@ -26,6 +26,9 @@ public class SupDeliveries {
             throw new IllegalArgumentException("Given delivery object must NOT be null.");
 
         this.getDeliveries().add(delivery);
+
+        //Add delivery quantity to global stock
+        
         return true;
     }
 

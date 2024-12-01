@@ -18,7 +18,7 @@ public class Stock {
     }
 
     //Mutator methods
-    public boolean add(Item item) {
+        public boolean add(Item item) {
         //Validation
         if(item == null)
             throw new IllegalArgumentException("Given ArrayList<Item> must NOT be null.");
@@ -26,7 +26,6 @@ public class Stock {
         //Use ArrayList<T> addAll method to add given items to instance ArrayList<Item> products
         return products.add(item);
     }
-    
     /**
      * Finds an Item in ArrayList<item> products.
      * @param itemName A String item name to search for in products
@@ -37,7 +36,7 @@ public class Stock {
         if(itemName == null)
             throw new IllegalArgumentException("Given Item object must NOT be null.");
         if(itemName.isEmpty() || this.getProducts().isEmpty()) {
-            return new Item();
+            return null;
         }
 
         //Initialise for loop to search ArrayList<Item> products instance variable for given itemName
@@ -48,7 +47,7 @@ public class Stock {
             }
         }
 
-        return new Item();
+        return null;
     }
 
     /**
