@@ -17,18 +17,21 @@ public class Stock {
         return products;
     }
 
-    //Setters
+    //Mutator methods
     public boolean add(Item item) {
         //Validation
         if(item == null)
             throw new IllegalArgumentException("Given ArrayList<Item> must NOT be null.");
 
         //Use ArrayList<T> addAll method to add given items to instance ArrayList<Item> products
-        products.add(item);
-        return true;
+        return products.add(item);
     }
-
-    //Mutator methods
+    
+    /**
+     * Finds an Item in ArrayList<item> products.
+     * @param itemName A String item name to search for in products
+     * @return The found Item object
+     **/
     public Item findItem(String itemName) {
         //Validation
         if(itemName == null)

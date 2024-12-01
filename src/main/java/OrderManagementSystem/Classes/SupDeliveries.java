@@ -85,18 +85,21 @@ public class SupDeliveries {
         //Validation
         if(supName == null)
             throw new IllegalArgumentException("Given supplier name String must NOT be null.");
-
-        if(supName.isBlank())
+        if(supName.isBlank() || this.getDeliveries().size() == 0)
             return -1;
 
         //Declare int to track number of Item objects deleted
-        int deleted = 0;
+        int numDeliveriesDeleted = 0;
         
         //Initialise for loop to iterate over ArrayList<Delivery>
         for (int i = 0; i < getDeliveries().size(); i++) {
-            //Check if current element supplierName matches 
+            //Check if current element's Item supplierName matches given supName
+            if(this.getDeliveries().get(i).getItemRef().getSupplierRef().getName().equalsIgnoreCase(supName)) {
+                this.getDeliveries().remove(i);
+                numDeliveriesDeleted++;
+            }
         }
 
-        return deleted;
+        return numDeliveriesDeleted;
     }
 }
