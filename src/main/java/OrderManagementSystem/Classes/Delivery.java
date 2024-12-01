@@ -1,7 +1,10 @@
 package OrderManagementSystem.Classes;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 
 /**
  * Template for all Delivery objects.
@@ -24,7 +27,7 @@ public class Delivery {
         //Set attribute values
         setItemRef(new Item());
         setDate(LocalDate.now());
-        setQuantity();
+        setQuantity(0);
     }
     //Arguments for all attributes
     /**
@@ -34,10 +37,10 @@ public class Delivery {
      * 
      * @see Quantity quantity of items is set automatically to items size
      */
-    public Delivery(Item item, LocalDate date) {
+    public Delivery(Item item, int quantity, LocalDate date) {
         setItemRef(item);
         setDate(date);
-        setQuantity();
+        setQuantity(quantity);
     }
 
     //Getter methods
@@ -66,7 +69,6 @@ public class Delivery {
 
         //Overwrite itemRef array
         this.itemRef = item;
-        setQuantity();
         return true;
     }
     public boolean setDate(LocalDate date) {
@@ -81,13 +83,13 @@ public class Delivery {
         return true;
     }
 
-    public boolean setQuantity() {
+    public boolean setQuantity(int quantity) {
         //Validate attributes
-        if(this.itemRef == null) {
-            throw new IllegalArgumentException("There must be items in itemRef to set quantity.");
+        if(this.getItemRef() == null) {
+            throw new IllegalArgumentException("There must be an Item object in itemRef to set quantity.");
         }
 
-        this.quantity = this.itemRef.getQuantity();
+        this.quantity = quantity;
         return true;
     }
     
@@ -95,5 +97,10 @@ public class Delivery {
     //Calculate Delivery cost
     public double calculateDeliveryCost() {
     	return this.itemRef.getUnitCostPrice() * this.itemRef.getQuantity();
+    }
+
+    @Override
+    public String toString() {
+        return "Item name: "+this.getItemRef().getName()+"\nItem quantity: "+this.getQuantity()+"\nDelivery date: "+this.getDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))+"\n";
     }
 }

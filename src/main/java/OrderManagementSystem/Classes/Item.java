@@ -172,11 +172,11 @@ public class Item {
 
     //Mutator methods
     /**
-     * Increases Item quantity in stock by given amount.
+     * Increases Item quantity by given amount.
      * @param amount The amount to increase on quantity in stock
      * @return A boolean indicating whether or not the operation was successful
      */
-    public boolean increaseQuantityInStock(int amount) {
+    public boolean increaseQuantity(int amount) {
         //Validate arguments
         if(amount < 0) {
             throw new IllegalArgumentException("Given amount must be a positive integer.");
@@ -188,11 +188,11 @@ public class Item {
     }
 
     /**
-     * Decreases Item quantity in stock by given amount.
+     * Decreases Item quantity by given amount.
      * @param amount The amount to decrease on quantity in stock
      * @return A boolean whether or not the operation was successful as a boolean value
      */
-    public boolean decreaseQuantityInStock(int amount) {
+    public boolean decreaseQuantity(int amount) {
         //Validate arguments
         if(amount < 0) {
             throw new IllegalArgumentException("Given amount must be a positive integer.");

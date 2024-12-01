@@ -102,4 +102,21 @@ public class SupDeliveries {
 
         return numDeliveriesDeleted;
     }
+
+    /** 
+     * Displays all items in deliveries ArrayList
+     * 
+     * @return nothing
+    **/
+    public boolean displayAllDeliveries() {
+        //Validation
+        if(this.getDeliveries().size() == 0)
+            return false;
+        //Initialise for loop to iterate over deliveries
+        for (int i = 0; i < getDeliveries().size(); i++) {
+            System.out.println(getDeliveries().get(i).toString()+"\n");
+        }
+
+        return true;
+    }
 }

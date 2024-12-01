@@ -117,6 +117,13 @@ public class Supplier {
     }
 
     //Mutator methods
+    /**
+     * Increases the amount owed to this Supplier object, by specified amount.
+     * @param amount The specified increase amount
+     * @return A boolean indicating success of operation
+     * 
+     * @throws IllegalArgumentException If given amount is not a number
+    **/
     public boolean increaseAmountOwed(double amount) {
         //Validate arguments
         if(Double.isNaN(amount)) {
@@ -131,6 +138,14 @@ public class Supplier {
         this.amountOwed += amount;
         return true;
     }
+
+    /**
+     * Decreases amount owed to this Supplier object, by the amount specified.
+     * @param amount The amount, by which the amount owed will be decreased
+     * @return A boolean indicating operation success
+     * 
+     * @throws IllegalArgumentException If specified amount is not a number
+     **/
     public boolean decreaseAmountOwed(double amount) {
         //Validate arguments
         if(Double.isNaN(amount)) {
@@ -146,21 +161,24 @@ public class Supplier {
         return true;
     }
 
-    //Create static methods for searching ArrayList suppliers
+    //Create methods for searching ArrayList suppliers
     /**
-     * Adds this Supplier object to static suppliers.
+     * Adds this Supplier object to static ArrayList<Supplier> suppliers.
      */
     private void addSupplier() {
         //Add this object to suppliers
         suppliers.add(this);
     }
 
-
-    //Create method to sort private static ArrayList<Item> suppliers alphabetically by supplierName
+    /**
+     * Static method to sort private static ArrayList<Item> suppliers alphabetically by supplierName
+     * @return A boolean indicating operationn success
+     */
     public static boolean sortSuppliers() {
         getSuppliers().sort( (a, b) -> { return 1*a.getName().compareTo(b.getName());} );
         return true;
     }
+    
     //Override toString()
     @Override
     public String toString() {
