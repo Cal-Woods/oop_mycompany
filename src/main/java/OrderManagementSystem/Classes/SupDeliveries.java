@@ -32,7 +32,7 @@ public class SupDeliveries {
     /**
      * Searches ArrayList<Delivery> for Delivery objects on particular days
      * @param day A three character String, containing a case-insensitive abbreviated day. E.g. "mon" or "THU" or "SaT"
-     * @return 
+     * @return An ArrayList<Delivery> containing filtered information
      */
     public ArrayList<Delivery> findAllDeliveries(LocalDate day) {
         //Validation
@@ -74,11 +74,29 @@ public class SupDeliveries {
         for (int i = 0; i < getDeliveries().size(); i++) {
             //Check if current Delivery Item matches given Item object
             if(getDeliveries().get(i).getItemRef().getName().equalsIgnoreCase(itemName)) {
-                
                 //Add matching item to deliveries method ArrayList<Delivery>
                 deliveries.add(getDeliveries().get(i));
             }
         }
         return deliveries;
+    }
+
+    public int deleteDeliveries(String supName) {
+        //Validation
+        if(supName == null)
+            throw new IllegalArgumentException("Given supplier name String must NOT be null.");
+
+        if(supName.isBlank())
+            return -1;
+
+        //Declare int to track number of Item objects deleted
+        int deleted = 0;
+        
+        //Initialise for loop to iterate over ArrayList<Delivery>
+        for (int i = 0; i < getDeliveries().size(); i++) {
+            //Check if current element supplierName matches 
+        }
+
+        return deleted;
     }
 }
