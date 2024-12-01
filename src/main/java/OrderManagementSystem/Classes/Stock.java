@@ -16,6 +16,19 @@ public class Stock {
     public ArrayList<Item> getProducts() {
         return products;
     }
+    //create display() method
+    public boolean display() {
+        //Validation
+        if(this.getProducts().isEmpty() || this.getProducts().size() == 0)
+            return false;
+
+        //Initialise for loop to iterate over ArrayList<Item> products
+        for (int i = 0; i < getProducts().size(); i++) {
+            System.out.println(getProducts().get(i).toString()+"\n");
+        } 
+
+        return true;
+    }
 
     //Mutator methods
         public boolean add(Item item) {
