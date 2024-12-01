@@ -78,13 +78,10 @@ public class Delivery {
     	//Create total double variable
     	double total = 0.00;
     	
-    	//Set total to total + each Item unit cost price
+    	//Increase total by total + each Item unit cost price * each Item quantity
     	for(int i = 0; i < itemRef.length; i++) {
-    	total += itemRef[i].getUnitCostPrice();
+    	total += itemRef[i].getUnitCostPrice() * itemRef[i].getQuantityInStock();
     	}
-    	
-    	//Set total to total * quantity
-    	total *= getQuantity();
     	
     	return total;
     }
