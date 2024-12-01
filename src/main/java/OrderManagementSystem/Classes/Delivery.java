@@ -87,13 +87,13 @@ public class Delivery {
             throw new IllegalArgumentException("There must be items in itemRef to set quantity.");
         }
 
-        this.quantity = this.itemRef.getQuantityInStock();
+        this.quantity = this.itemRef.getQuantity();
         return true;
     }
     
     //Mutator methods
     //Calculate Delivery cost
     public double calculateDeliveryCost() {
-    	return this.itemRef.getUnitCostPrice() * this.itemRef.getQuantityInStock();
+    	return this.itemRef.getUnitCostPrice() * this.itemRef.getQuantity();
     }
 }

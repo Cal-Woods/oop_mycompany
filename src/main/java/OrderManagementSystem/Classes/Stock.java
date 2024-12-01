@@ -107,7 +107,7 @@ public class Stock {
         //Initialise for loop
         for (int i = 0; i < this.getProducts().size(); i++) {
             //Check for Item that has a quantity lower than reOrderLevel AND is not onOrder
-            if(this.getProducts().get(i).getQuantityInStock() <= this.getProducts().get(i).getReOrderLevel() && this.getProducts().get(i).isOnOrder() == false) {
+            if(this.getProducts().get(i).getQuantity() <= this.getProducts().get(i).getReOrderLevel() && this.getProducts().get(i).isOnOrder() == false) {
                 ordersforSuppliers.add(this.getProducts().get(i));
             }
         }

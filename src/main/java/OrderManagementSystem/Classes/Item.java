@@ -72,7 +72,7 @@ public class Item {
     public int getUniqueID() {
         return this.uniqueID;
     }
-    public int getQuantityInStock() {
+    public int getQuantity() {
         return this.quantity;
     }
     public int getReOrderLevel() {
