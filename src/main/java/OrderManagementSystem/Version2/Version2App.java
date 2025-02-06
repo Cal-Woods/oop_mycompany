@@ -143,6 +143,9 @@ public class Version2App {
     System.out.println("");
     //Test deliveries contains three Delivery objects
     deliveries.displayAllDeliveries();
+
+    //Close Scanner sc
+    sc.close();
     }
     
     //Create updateOwed() method to update amount owed to Suppliers
