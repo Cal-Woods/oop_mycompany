@@ -93,6 +93,11 @@ public class Delivery {
     
     //Mutator methods
     //Calculate Delivery cost
+
+    /**
+     * Calculates a Delivery cost using the unit cost * unit price
+     * @return calculated cost of Delivery
+     */
     public double calculateDeliveryCost() {
     	return this.itemRef.getUnitCostPrice() * this.getQuantity();
     }
