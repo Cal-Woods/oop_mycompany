@@ -82,6 +82,6 @@ public class SupOrder {
         this.quantity = getItems().size();
     }
     public void setUniqueID() {
-        this.uniqueID = uniqueID++;
+        this.uniqueID = idSeed++;
     }
 }
