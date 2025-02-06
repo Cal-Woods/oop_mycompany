@@ -21,24 +21,11 @@ public class Version1App {
         Item i1 = new Item("Action Man", 4, 7, 17, 32.99, new Supplier(), true);
         Item i2 = new Item("Shampoo", 24, 6, 20, 24.99, new Supplier("Cal Woods", "12 Nunya Beeswax Drive, Co Louth, Ireland", 3000.00, 6000.00), true);
         Item i3 = new Item("Conditioner", 56, 2, 24, 21.99, new Supplier("Aaron Lee", "111 Gambler's Rest, New Vegas, Mojave Desert, Nevada, USA", 1243.76, 3499.99), true);
-        Item i4 = new Item("Shower Gel", 87, 3, 45, 44.99, new Supplier(), false);
-        Item i5 = new Item("Aftershave", 122,  4, 65, 34.99, new Supplier(), false);
         
-        //Store Item objects in arrays
-        ArrayList<Item> items1 = new ArrayList<Item>();
-        //Add i1, i2 Item objects to items1 ArrayList
-        items1.add(i1);
-        items1.add(i2);
-
-        //Repeat process with items2 ArrayList for i3, i4, i5
-        ArrayList<Item> items2 = new ArrayList<Item>();
-        items2.add(i3);
-        items2.add(i4);
-        items2.add(i5);
-        
-        Delivery d1 = new Delivery(items1, LocalDate.now());
-        Delivery d2 = new Delivery(items1, LocalDate.now());
-		Delivery d3 = new Delivery(items2, LocalDate.now());
+        //Place Item's in three Delivery objects
+        Delivery d1 = new Delivery(i1, 1, LocalDate.now());
+        Delivery d2 = new Delivery(i2, 12, LocalDate.now());
+		Delivery d3 = new Delivery(i3, 24, LocalDate.now());
 		
         System.out.println(d1.getQuantity());
 		//Print Supplier details using Supplier.toString() for each supplier
