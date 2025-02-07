@@ -9,7 +9,7 @@ import OrderManagementSystem.Classes.Supplier;
 public class Version1App {
     public static void main(String[] args) {
         //Print message
-        System.out.println("This program represents an order management system. This is CA1 of the OOP Module.[]");
+        System.out.println("This program represents an order management system. This is CA1 of the OOP Module.");
 
 
         Supplier s1 = new Supplier();
