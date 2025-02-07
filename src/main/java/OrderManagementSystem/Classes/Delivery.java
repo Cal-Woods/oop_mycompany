@@ -52,14 +52,7 @@ public class Delivery {
         this.date = date;
         return true;
     }
-    private boolean setQuantityInternal() {
-        //Validate attributes
-        if(this.itemRef == null) {
-            return false;
-        }
-        this.quantity = this.itemRef.length;
-        return true;
-    }
+
     public boolean setQuantity(int quantity) {
         //Validate attributes
         if(this.itemRef == null) {
@@ -69,6 +62,7 @@ public class Delivery {
             return false;
         }
 
+        this.quantity = quantity;
         return true;
     }
     
