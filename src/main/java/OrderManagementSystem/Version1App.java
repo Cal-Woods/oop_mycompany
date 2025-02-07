@@ -28,9 +28,8 @@ public class Version1App {
         Item[] items2 = {i3, i4, i5};
         
         Delivery d1 = new Delivery(items1, LocalDate.now(), 2);
-        Delivery d2 = new Delivery(items1, LocalDate.now(), 12);
-		Delivery d3 = new Delivery(items2, LocalDate.now(), 30);
-		
+        Delivery d2 = new Delivery(items2, LocalDate.now(), 12);
+
 		//Print Supplier details using Supplier.toString() for each supplier
         System.out.println(s1.toString());
         System.out.println(s2.toString());
