@@ -80,9 +80,9 @@ public class Delivery {
     	
     	//Increase total by total + each Item unit cost price * each Item quantity
     	for(int i = 0; i < itemRef.length; i++) {
-    	total += itemRef[i].getUnitCostPrice() * itemRef[i].getQuantityInStock();
+    	total += itemRef[i].getUnitCostPrice();
     	}
     	
-    	return total;
+    	return total * this.getQuantity();
     }
 }
