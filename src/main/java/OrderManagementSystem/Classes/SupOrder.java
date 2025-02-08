@@ -10,7 +10,7 @@ public class SupOrder {
     private int quantity;
     private int uniqueID;
 
-    //Declare static IDSeed
+    //Declare static IDSeed for Incremental id assignment
     private static int idSeed = 0;
 
     //Create no argument constructor
@@ -82,6 +82,6 @@ public class SupOrder {
         this.quantity = getItems().size();
     }
     public void setUniqueID() {
-        this.uniqueID = uniqueID++;
+        this.uniqueID = idSeed++;
     }
 }
