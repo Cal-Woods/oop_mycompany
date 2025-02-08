@@ -68,11 +68,16 @@ public class Delivery {
     
     //Mutator methods
     //Calculate Delivery cost
+
+    /**
+     * Calculates total cost of this Delivery(for each Price*quantity).
+     * @return total Delivery cost
+     */
     public double calculateDeliveryCost() {
     	//Create total double variable
     	double total = 0.00;
     	
-    	//Increase total by total + each Item unit cost price * each Item quantity
+    	//Increase total by total + each Item unit cost price * each Item quantityInStock
     	for(int i = 0; i < itemRef.length; i++) {
     	total += itemRef[i].getUnitCostPrice() * itemRef[i].getQuantityInStock();
     	}
