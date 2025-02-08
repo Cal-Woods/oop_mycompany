@@ -17,7 +17,6 @@ public class Item {
     private Supplier supplierRef;
     private boolean onOrderFlag;
 
-
     //Constructors
     //No arguments
     
@@ -27,14 +26,14 @@ public class Item {
      */
     public Item() {
         //Set Item attributes
-        this.itemName = "Change name";
-        this.uniqueID = 0;
-        this.quantity = 0;
-        this.reOrderLevel = 0;
-        this.reOrderQuantity = 0;
-        this.unitCostPrice = 0.00;
-        this.supplierRef = null;
-        this.onOrderFlag = false;
+        setName("Change name");
+        setUniqueID();
+        setStockQuantity(0);
+        setReOrderLevel(0);
+        setReOrderQuantity(0);
+        this.setStockQuantity(0);
+        setSupplierRef(new Supplier());
+        setOnOrder(false);
     }
 
     //Create static int globalID to generate unique IDs

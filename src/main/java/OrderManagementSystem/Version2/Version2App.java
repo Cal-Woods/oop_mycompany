@@ -33,64 +33,13 @@ public class Version2App {
     stock.display();
 
 
-    System.out.print("Enter the name of each Item you want to add to each delivery. If it is in stock, it will be added. Otherwise, Item cannot be added and user must enter again.\n");
+    //Call 'userStockSelect()' & store in a Delivery object
+    Delivery delivery1 = userStockSelect(sc, stock);
 
-    String name = "";
-    int quantity = 0;
+    //Repeat process twice
+    Delivery delivery2 = userStockSelect(sc, stock);
     
-    System.out.print("Enter an Item name to search our stock: ");
-    name = sc.nextLine();
-
-    //Repeatedly check if Item with given name is NOT in stock
-    while(stock.findItem(name) == null) {
-        //Print prompt
-        System.out.print("Given name could not be found in stock. Please re-enter name: ");
-        //Set name to user input
-        name = sc.nextLine();
-
-        //Clear Scanner buffer
-        sc.nextLine();
-
-    }
-    System.out.print("Enter quantity: ");
-    quantity = sc.nextInt();
-
-    //Create Delivery object delivery1
-    Delivery delivery1 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
-    sc.nextLine();
-
-    //Repeat process
-    System.out.print("\nPlease enter name of Item to search for next delivery: ");
-    name = sc.nextLine(); 
-    while(stock.findItem(name) == null) {
-        //Print prompt
-        System.out.print("Given name could not be found in stock. Please re-enter name: ");
-        //Set name to user input
-        name = sc.nextLine();
-
-        sc.nextLine();
-    }
-    System.out.print("Enter quantity: ");
-    quantity = sc.nextInt();
-    Delivery delivery2 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
-    sc.nextLine();
-
-    System.out.print("\nEnter the name of an Item to find and a quantity on the next line: ");
-    name = sc.nextLine();
-    while(stock.findItem(name) == null) {
-        //Print prompt
-        System.out.print("Given name could not be found in stock. Please re-enter name: ");
-        //Set name to user input
-        name = sc.nextLine();
-
-        //Clear Scanner buffer
-        sc.nextLine();
-    }
-    System.out.print("Enter quantity: ");
-    quantity = sc.nextInt();
-
-    Delivery delivery3 = new Delivery(stock.findItem(name), quantity, LocalDate.now());
-    sc.nextLine();
+    Delivery delivery3 = userStockSelect(sc, stock);
 
     //Print blank line
     System.out.println();
@@ -211,5 +160,57 @@ public class Version2App {
         }
 
         return 0;
+    }
+
+    /**
+     * Searches a given stock object by user-specified name, for a specific Item object & creates a Delivery object with a specific user-specified quantity.
+     * @param sc - Given Scanner object: Should use System.in
+     * @param stock - Given Stock object
+     * @return A constructed Delivery object
+     * 
+     * @throws IllegalArgumentException when Scanner object or Stock object is null.
+     */
+    public static Delivery userStockSelect(Scanner sc, Stock stock) {
+        //Validation
+        if(sc == null) throw new IllegalArgumentException("Given Scanner object must NOT be null!");
+        if(stock == null) throw new IllegalArgumentException("Given Stock object must NOT be null!");
+        
+        System.out.print("Enter the name of each Item you want to add to each delivery. If it is in stock, it will be added. Otherwise, Item cannot be added and user must enter again.\n");
+
+        String name = "";
+        int quantity = 0;
+        
+        System.out.print("Enter an Item name to search our stock: ");
+        name = sc.nextLine();
+    
+        //Declare found to store found Item object
+        Item found = stock.findItem(name);
+        //Repeatedly check if Item with given name is NOT in stock
+        while(found == null) {
+            //Print prompt
+            System.out.print("Given name could not be found in stock. Please re-enter name: ");
+            //Set name to user input
+            name = sc.nextLine();
+    
+            //Re-store found Item
+            found = stock.findItem(name);    
+        }
+        //Clear Scanner buffer
+        sc.nextLine();
+
+        //Get quantity from user
+        System.out.print("Enter quantity: ");
+        quantity = sc.nextInt();
+
+        //Initialise while loop to check that quantity is below 1 
+        while(quantity < 1) {
+            quantity = sc.nextInt();
+        }
+
+        //Declare new Delivery object
+        Delivery delivery = new Delivery(found, quantity, LocalDate.now().plusDays(5));
+
+        //Return delivery
+        return delivery;
     }
 }
