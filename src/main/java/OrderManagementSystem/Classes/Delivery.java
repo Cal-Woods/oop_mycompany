@@ -20,7 +20,7 @@ public class Delivery {
         //Set attribute values
         this.itemRef = new Item[0];
         setDate(LocalDate.now());
-        setQuantityInternal();
+        setQuantity(0);
     }
     //Arguments for all attributes
     public Delivery(Item[] items, LocalDate date, int quantity) {
@@ -45,7 +45,7 @@ public class Delivery {
     public boolean setItemRef(Item[] items) {
         //Overwrite itemRef array
         this.itemRef = items;
-        setQuantityInternal();
+        setQuantity(items.length);
         return true;
     }
     public boolean setDate(LocalDate date) {
