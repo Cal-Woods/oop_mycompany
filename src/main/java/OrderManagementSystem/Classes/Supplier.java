@@ -4,19 +4,25 @@ import java.util.InputMismatchException;
 
 public class Supplier {
     //Attributes
+    private int id;
     private String supplierName;
     private String supplierAddress;
     private double amountOwed;
     private double creditLimit;
 
+    //Static id generator for incremental id assignment
+    private static int idGenerator = 1;
+
     //Constructors
     public Supplier() {
+        this.id = idGenerator++;
         this.supplierName = "John Doe";
         this.supplierAddress = "No address given";
         this.amountOwed = 0.00;
         this.creditLimit = 0.00;
     }
     public Supplier(String name, String address, double amountOwed, double creditLimit) {
+        this.id = idGenerator++;
         this.supplierName = name;
         this.supplierAddress = address;
         this.amountOwed = amountOwed;
