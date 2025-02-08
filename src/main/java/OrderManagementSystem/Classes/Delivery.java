@@ -1,10 +1,8 @@
 package OrderManagementSystem.Classes;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.Locale;
 
 /**
  * Template for all Delivery objects.
