@@ -67,4 +67,31 @@ public class SupplierCollection {
             return new ArrayList<Supplier>();
         }
     }
+
+    /**
+     * Adds a Supplier object to instance SupplierCollection.
+     * @param supplier Given Supplier object
+     * 
+     * @return Boolean true if successful
+     */
+    public boolean add(Supplier supplier) {
+        //Validation
+        if(supplier == null) throw new IllegalArgumentException("Given Supplier object must NOT be null!");
+
+        //Call suppliers instance 'add()' method to add given Supplier object to suppliers
+        this.suppliers.add(supplier);
+
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        String list = "";
+
+        for (int i = 0; i < this.suppliers.size(); i++) {
+            list += this.suppliers.get(i).toString()+"\n";
+        }
+
+        return list;
+    }
 }
