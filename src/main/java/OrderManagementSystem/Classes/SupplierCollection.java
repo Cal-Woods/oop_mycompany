@@ -2,6 +2,7 @@ package OrderManagementSystem.Classes;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -118,6 +119,66 @@ public class SupplierCollection {
         }
 
         return;
+    }
+
+    public boolean cStoreSuppliers(String fileName) {
+        //Validation
+        if(fileName == null) throw new IllegalArgumentException("Given fileName must NOT be null!");
+        if(fileName.isBlank()) return false;
+
+        //If instance ArrayList is empty
+        if(this.suppliers.isEmpty()) {
+            System.out.println("Provided fileName is blank.");
+
+            return false;
+        }
+
+        //Declare File object at fileName
+        File file = new File(fileName);
+
+        //Implement try-catch statement to catch FileNotFoundException
+        try {
+            //Declare Scanner object set to System.in
+            PrintStream ps = new PrintStream(file);
+            //Initialise for each loop to insert each element of SupplierCollection instance into file
+            for(Supplier s : this.suppliers) {
+                //Write data from Supplier properties to file
+                ps.println(s.getName()+","+s.getAddress()+","+s.getAmountOwed()+","+s.getCreditLimit());
+            }
+
+            //Close PrintStream
+            ps.close();
+
+            return true;
+        }
+
+        catch(FileNotFoundException e) {
+            //Print message
+            System.out.println("file "+fileName+" was not found, attempting to create new file with that name.");
+
+            try {
+                //Create file if not found
+                file.createNewFile();
+
+                PrintStream ps = new PrintStream(file);
+
+                //Initialise for each loop to insert each element of SupplierCollection instance into file
+                for(Supplier s : this.suppliers) {
+                    //Write data from Supplier properties to file
+                    ps.println(s.getName()+","+s.getAddress()+","+s.getAmountOwed()+","+s.getCreditLimit());
+                }
+                //Close PrintStream instance
+                ps.close();
+
+                return true;
+            }
+
+            catch(Exception ex) {
+                System.out.println(ex.getMessage());
+
+                return false;
+            }
+        }
     }
     @Override
     public String toString() {
