@@ -1,0 +1,83 @@
+Make the necessary corrections to version 2 of your project before starting version 3.
+
+Create a new class SupplierCollection.
+
+ 
+
+Class SupplierCollection:
+
+ 
+
+Has an instance variable called suppliers that is an arrayList of Supplier objects.
+
+ 
+
+A no argument constructor and a constructor that accepts a binary file name as a parameter. The binary file should contain an arrayList of Supplier objects which should be used to populate suppliers.
+
+ 
+
+The class also contains the following methods:
+
+ 
+
+1) add() - adds a supplier to the arrayList suppliers. The supplier is passed as a parameter.
+
+ 
+
+2) add() – accepts a file name as a parameter, reads data from the file,  creates Supplier objects and adds them to the arrayList suppliers.
+
+ 
+
+The structure of records in the supplier file is: supplierName, supplierAddress, amountOwed,creditlimit,
+
+ 
+
+Note that there is one record per line and that the field values are separated by commas.
+
+ 
+
+The data in the file may be corrupt. If the program encounters invalid data, the record containing the data should not be used to create a Supplier object, instead the record should be written to a file invalidSupplier.txt, and a message indicating a problem with the record should also be added to the file.
+
+ 
+
+3) displayAll() – displays details of all suppliers in alphabetical order.
+
+ 
+
+4) displayCreditors() – displays details of all suppliers in decreasing order of amountOwed.
+
+ 
+
+ 
+
+5) cstoreSuppliers() – accepts a binary file name as a parameter and stores the arrayList, suppliers to this file.
+
+ 
+
+6) Add functionality to your project that uses a user defined Exception.
+
+ 
+
+Start up AppClass :
+
+
+Create a Suppliers object, group1 using the no argument constructor.
+
+Call the add method in the Suppliers class using suppliers.txt as a parameter.
+
+Call displayAll()
+
+Write a static method to display all invalid records from suppliers.txt. Call this method.
+Note that the invalid recorde should be in invalidSupplier.txt.
+
+Call storeSuppliers() using sup.bin as an argument.
+
+Create a Suppliers object, group2 passing sup.bin as an argument to the parameterized constructor.
+
+Display all group2 suppliers.
+ 
+
+ 
+
+Your project should be uploaded before14/03/2025.
+

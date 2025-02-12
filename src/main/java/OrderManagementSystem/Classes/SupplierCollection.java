@@ -51,7 +51,13 @@ public class SupplierCollection {
             while(sc.hasNextLine()) {
                 //Declare temp String array to hold each value of file line
                 String name = sc.next(), address = sc.next();
+                //Check file data before creating & adding Supplier object, return if there's a problem
+                //String data check
+                if(name.isBlank() || address.isBlank()) return null;
+
                 double owed = Double.parseDouble(sc.next()), limit = Double.parseDouble(sc.next());
+                //Double data check using try-catch
+                
 
                 //Call sc.nextLine() to push sc forward
                 sc.nextLine();
