@@ -90,6 +90,35 @@ public class SupplierCollection {
         return true;
     }
 
+    public void displayAll() {
+        //Declare ArrayList temp
+        ArrayList<Supplier> temp = new ArrayList<Supplier>(suppliers);
+
+        //Sort temp alphabetically by supplier name
+        temp.sort((a, b) -> {return 1 * a.getName().compareToIgnoreCase(b.getName());});
+        
+        //Initialise for each loop
+        for(Supplier s : temp) {
+            System.out.println(s);
+        }
+
+        return;
+    }
+
+    public void displayCreditors() {
+        //Declare ArrayList temp
+        ArrayList<Supplier> temp = new ArrayList<Supplier>(suppliers);
+
+        //Sort temp in descending order by amount owed
+        temp.sort((a, b) -> {return b.getAmountOwed() > a.getAmountOwed() ? 1: -1;});
+        
+        //Initialise for each loop
+        for(Supplier s : temp) {
+            System.out.println(s);
+        }
+
+        return;
+    }
     @Override
     public String toString() {
         String list = "";
