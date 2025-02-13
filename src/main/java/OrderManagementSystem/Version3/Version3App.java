@@ -5,10 +5,14 @@ import OrderManagementSystem.Classes.SupplierCollection;
 
 public class Version3App {
     public static void main(String[] args) {
-        SupplierCollection collection = new SupplierCollection("Binary-File");
+        //Print message
+        System.out.println("Creating group1 SupplierCollection object with default constructor.\n\n");
+        SupplierCollection group1 = new SupplierCollection();
 
-        collection.add(new Supplier("Kaitling Phillips", "666 Hells Highway", 564.38, 6000.87));
-
-        System.out.println(collection);
+        //Calling 'add()' from SupplierCollection 'group1'
+        //group1.add("suppliers.txt");
+        group1.add("suppliers.txt");
+        //Print suppliers
+        group1.displayAll();
     }
 }
