@@ -25,7 +25,8 @@ public class SupplierCollection {
      * @param path Given String containing file path
      **/
     public SupplierCollection(String path) {
-        this.suppliers = add(path);
+        this.suppliers = new ArrayList<Supplier>();
+        add(path);
     }
 
     /**
@@ -33,7 +34,7 @@ public class SupplierCollection {
      * @param path Given file path
      * @return An ArrayList<Supplier> to add to the instance ArrayList<Supplier>.
      */
-    public ArrayList<Supplier> add(String path) {
+    public void add(String path) {
         //Validation
         if(path == null || path.isBlank()) throw new IllegalArgumentException("Given path must NOT be null or a blank String!");
         
@@ -46,7 +47,7 @@ public class SupplierCollection {
             sc.useDelimiter(",");
 
             //Declare ArrayList<Supplier> list, initial capacity to return to instance ArrayList<Supplier>
-            ArrayList<Supplier> list = new ArrayList<Supplier>();
+            SupplierCollection list = new SupplierCollection();
 
             //Initialise while loop to read given file & create Supplier objects to add to list
             while(sc.hasNextLine()) {
@@ -54,7 +55,7 @@ public class SupplierCollection {
                 String name = sc.next(), address = sc.next();
                 //Check file data before creating & adding Supplier object, return if there's a problem
                 //String data check
-                if(name.isBlank() || address.isBlank()) return null;
+                if(name.isBlank() || address.isBlank()) return;
 
                 double owed = Double.parseDouble(sc.next()), limit = Double.parseDouble(sc.next());
                 
@@ -63,14 +64,15 @@ public class SupplierCollection {
                 sc.nextLine();
 
                 //Create an instance Supplier object & add to list
-                list.add(new Supplier(name, address, owed, limit));
+                this.add(new Supplier(name, address, owed, limit));
             }
 
-            return list;
+            return;
         }
         catch(FileNotFoundException e) {
             System.out.println(e.getMessage());
-            return new ArrayList<Supplier>();
+
+            return;
         }
     }
 
