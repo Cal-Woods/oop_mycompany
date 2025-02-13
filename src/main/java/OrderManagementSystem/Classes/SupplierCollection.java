@@ -144,7 +144,7 @@ public class SupplierCollection {
             //Initialise for each loop to insert each element of SupplierCollection instance into file
             for(Supplier s : this.suppliers) {
                 //Write data from Supplier properties to file
-                ps.println(s.getName()+","+s.getAddress()+","+s.getAmountOwed()+","+s.getCreditLimit());
+                ps.println(s.getName()+","+s.getAddress()+","+s.getAmountOwed()+","+s.getCreditLimit()+",");
             }
 
             //Close PrintStream

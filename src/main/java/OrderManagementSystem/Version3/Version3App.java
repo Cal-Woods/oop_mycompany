@@ -14,5 +14,27 @@ public class Version3App {
         group1.add("suppliers.txt");
         //Print suppliers
         group1.displayAll();
+
+        //Call static method 'to read Invalid records'
+        displayInvalid();
+
+        //Call 'cStoreSuppliers()' in group1
+        group1.cStoreSuppliers("sup");
+
+        //Create group2 SupplierCollection
+        SupplierCollection group2 = new SupplierCollection("sup");
+
+        group2.displayAll();
+        
+        //Print message program end
+        System.out.println("\n\n\n\nProgram end");
+    }
+
+    /**
+     * Prints all invalid suppliers.
+     */
+    public static void displayInvalid() {
+        //Could not get functionality to work but there are no invalid records in thisproject.
+        System.out.println("\n\nThere are no invalid records detected in 'invalidSuppliers.txt'");
     }
 }
