@@ -57,7 +57,6 @@ public class SupplierCollection {
                 if(name.isBlank() || address.isBlank()) return null;
 
                 double owed = Double.parseDouble(sc.next()), limit = Double.parseDouble(sc.next());
-                //Double data check using try-catch
                 
 
                 //Call sc.nextLine() to push sc forward
