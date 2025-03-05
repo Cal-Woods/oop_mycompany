@@ -80,4 +80,9 @@ public class DisSup extends Supplier {
         //Set this.discountPercentage to given discountPercentage
         this.discountPercentage = discountPercentage;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Order value for discount: "+this.getOrderValueForDiscount()+"\nDiscount percentage: "+this.discountPercentage+"\n";
+    }
 }
