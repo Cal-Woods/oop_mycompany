@@ -1,5 +1,5 @@
 package OrderManagementSystem.Classes;
 
-public class DisSup {
+public class DisSup extends Supplier {
     
 }
