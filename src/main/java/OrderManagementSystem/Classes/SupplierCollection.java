@@ -46,9 +46,6 @@ public class SupplierCollection {
             //Set sc delimiter to ','
             sc.useDelimiter(",");
 
-            //Declare ArrayList<Supplier> list, initial capacity to return to instance ArrayList<Supplier>
-            SupplierCollection list = new SupplierCollection();
-
             //Initialise while loop to read given file & create Supplier objects to add to list
             while(sc.hasNextLine()) {
                 //Declare temp String array to hold each value of file line
