@@ -59,4 +59,25 @@ public class DisSup extends Supplier {
     public double getDiscountPercentage() {
         return this.discountPercentage;
     }
+
+    //Setters
+    /**
+     * Sets the order value required for a discount.
+     * 
+     * @param orderValueForDiscount Given order value for discount
+     */
+    public void setOrderValueForDiscount(double orderValueForDiscount) {
+        //Set this.orderValueForDiscount to given orderValueForDiscount
+        this.orderValueForDiscount = orderValueForDiscount;
+    }
+
+    /**
+     * Sets instance discountPercentage to given discountPercentage.
+     * 
+     * @param discountPercentage Given discount percentage
+     */
+    public void setDiscountPercentage(double discountPercentage) {
+        //Set this.discountPercentage to given discountPercentage
+        this.discountPercentage = discountPercentage;
+    }
 }
