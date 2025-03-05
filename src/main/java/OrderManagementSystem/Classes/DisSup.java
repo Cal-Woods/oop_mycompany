@@ -40,4 +40,23 @@ public class DisSup extends Supplier {
         this.orderValueForDiscount = orderValueForDiscount;
         this.discountPercentage = discountPercentage;
     }
+
+    //Getters
+    /**
+     * Gets the order value required for this discount supplier to give a discount.
+     * 
+     * @return The order value this discount supplier requires before giving a discount
+     */
+    public double getOrderValueForDiscount() {
+        return this.orderValueForDiscount;
+    }
+
+    /**
+     * Gets the discount percentage that is applied by this discount supplier.
+     * 
+     * @return The discount percentage to apply to orders
+     */
+    public double getDiscountPercentage() {
+        return this.discountPercentage;
+    }
 }
