@@ -47,4 +47,51 @@ public class SupOrderBook {
         this.orders.addAll(orders);
         return 0;
     }
+
+
+    public double calcOrderCost(int id) {
+        //Sort orders by uniqueID in ascending order for binary search
+        this.orders.sort((a, b) -> {return a.getID() < b.getID() ? a.getID() : b.getID();});
+
+        //Declare SupOrder to store the matching object, or stay null
+        SupOrder match = null;
+
+        //Implement binary search for orders list SupOrder object with matching id
+        int start = 0;
+        int end = this.orders.size() - 1;
+
+        //Initialise while loop
+        while(start <= end) {
+            //Declare int mid for holding middle of end - start
+            int mid = start+(end-start)/2;
+
+            //Check binary search cases
+            if(this.orders.get(mid).getID() == id) {
+                //Store match
+                match = this.orders.get(mid);
+
+                break;
+            }
+            else if(this.orders.get(mid).getID() < id) {
+                start = mid;
+            }
+            else if(this.orders.get(mid).getID() > id) {
+                end = mid;
+            }
+        }
+
+        //TODO: Finish calculating order
+
+        // Declare SupOrder that gets SupOrder object from orders
+        // SupOrder match = this.orders.get(id);
+
+        // if(match == null) {
+        //     //Print error message
+        //     System.out.println("");
+
+
+        // }
+
+        return 0.00;
+    }
 }
