@@ -11,7 +11,7 @@ public class SupOrder {
     private int uniqueID;
 
     //Declare static IDSeed for Incremental id assignment
-    private static int idSeed = 0;
+    private static int idSeed = 1;
 
     //Create no argument constructor
     /**
@@ -21,7 +21,7 @@ public class SupOrder {
         this.itemRef = new ArrayList<Item>(0);
         this.date = LocalDate.EPOCH;
         this.quantity = getItems().size();
-        this.uniqueID = 0;
+        setUniqueID();
     }
 
     //A constructor that takes arguments
