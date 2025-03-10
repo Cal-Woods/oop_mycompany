@@ -50,48 +50,44 @@ public class SupOrderBook {
 
 
     public double calcOrderCost(int id) {
-        //Sort orders by uniqueID in ascending order for binary search
-        this.orders.sort((a, b) -> {return a.getID() < b.getID() ? a.getID() : b.getID();});
-
-        //Declare SupOrder to store the matching object, or stay null
+        //Declare SupOrder to store the matching return type of costBinSearch() method, or stay null
         SupOrder match = null;
 
         //Implement binary search for orders list SupOrder object with matching id
         int start = 0;
         int end = this.orders.size() - 1;
 
-        //Initialise while loop
-        while(start <= end) {
-            //Declare int mid for holding middle of end - start
-            int mid = start+(end-start)/2;
-
-            //Check binary search cases
-            if(this.orders.get(mid).getID() == id) {
-                //Store match
-                match = this.orders.get(mid);
-
-                break;
-            }
-            else if(this.orders.get(mid).getID() < id) {
-                start = mid;
-            }
-            else if(this.orders.get(mid).getID() > id) {
-                end = mid;
-            }
-        }
-
-        //TODO: Finish calculating order
-
         // Declare SupOrder that gets SupOrder object from orders
         // SupOrder match = this.orders.get(id);
 
-        // if(match == null) {
-        //     //Print error message
-        //     System.out.println("");
+        if(match == null) {
+            //Print message
+            System.out.println("There was no match found for given id "+id+".");
 
-
-        // }
+            return -1.00;
+        }
 
         return 0.00;
+    }
+
+    /**
+     * Searches for given id in instance list.
+     * 
+     * @param id Given id to search for in list.
+     * 
+     * @return Found SupOrder or null if NOT found.
+     * 
+     * @throws IllegalArgumentException If given id is less than 1
+     */
+    private SupOrder costLinearSearch(int id) {
+        //Initialise for loop
+        for (int i = 0; i < this.orders.size(); i++) {
+            //Check if i is id
+            if(this.orders.get(i).getID() == id) {
+                return this.orders.get(i);
+            }
+        }
+
+        return null;
     }
 }
