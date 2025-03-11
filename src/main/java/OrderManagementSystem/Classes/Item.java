@@ -209,6 +209,6 @@ public class Item {
     //Override toString()
     @Override
     public String toString() {
-        return "Item name: "+itemName+"\nUnique ID: "+uniqueID+"\nQuantity of item: "+quantity+"\nRe-Order level: "+reOrderLevel+"\nRe-Order quantity: "+reOrderQuantity+"\nUnit cost: "+unitCostPrice+" Euro\nSupplier ID Reference: "+supplierRef+"\nIs on order:"+onOrderFlag+"";
+        return "\nItem name: "+itemName+"\nUnique ID: "+uniqueID+"\nQuantity of item: "+quantity+"\nRe-Order level: "+reOrderLevel+"\nRe-Order quantity: "+reOrderQuantity+"\nUnit cost: "+unitCostPrice+" Euro\nSupplier ID Reference: "+supplierRef+"\nIs on order:"+onOrderFlag+"";
     }
 }
