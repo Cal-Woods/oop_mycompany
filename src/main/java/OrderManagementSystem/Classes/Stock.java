@@ -1,6 +1,7 @@
 package OrderManagementSystem.Classes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Stock {
     //Attribute: ArrayList<Item> products
@@ -152,6 +153,36 @@ public class Stock {
 
         //Print message
         System.out.println("The items in this list are:\n");
+
+        //Display each Item in products
+        for(Item item: display) {
+            System.out.print("\n"+item);
+        }
+
+        return true;
+    }
+
+    /**
+     * Displays instance Item objects in descending order of quantity.
+     * 
+     * @return True if instance list is NOT empty, false otherwise.
+     */
+    public boolean displayByQty() {
+        //Validation
+        //Check if products is empty
+        if(this.products.isEmpty()) return false;
+
+        //Declare an ArrayList display to hold copy of all products
+        ArrayList<Item> display = new ArrayList<Item>();
+
+        //Copy products to display
+        display.addAll(products);
+
+        //Sort products by quantity descending
+        display.sort((a, b) -> {return b.getQuantity() > a.getQuantity() ? 1 : -1;});
+
+        //Print message
+        System.out.println("\n\nThe items in this list are:\n");
 
         //Display each Item in products
         for(Item item: display) {
