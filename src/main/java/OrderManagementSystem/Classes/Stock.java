@@ -130,4 +130,34 @@ public class Stock {
 
         return ordersForSuppliers;
     }
+        
+    /**
+     * Displays all orders ordered alphabetically by name.
+     * 
+     * @return True if instance list is NOT empty, false otherwise
+     */
+    public boolean displayByName() {
+        //Validation
+        //Check if products is empty
+        if(this.products.isEmpty()) return false;
+
+        //Declare an ArrayList display to hold copy of all products
+        ArrayList<Item> display = new ArrayList<Item>();
+
+        //Copy products to display
+        display.addAll(products);
+
+        //Sort products by name ascending
+        display.sort((a, b) -> {return 1 * a.getName().compareToIgnoreCase(b.getName());});
+
+        //Print message
+        System.out.println("The items in this list are:\n");
+
+        //Display each Item in products
+        for(Item item: display) {
+            System.out.print("\n"+item);
+        }
+
+        return true;
+    }
 }
