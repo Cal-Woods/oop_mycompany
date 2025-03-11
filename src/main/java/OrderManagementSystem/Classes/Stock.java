@@ -19,7 +19,7 @@ public class Stock {
     //create display() method
     public boolean display() {
         //Validation
-        if(this.getProducts().isEmpty() || this.getProducts().size() == 0)
+        if(this.getProducts().isEmpty())
             return false;
 
         //Initialise for loop to iterate over ArrayList<Item> products
