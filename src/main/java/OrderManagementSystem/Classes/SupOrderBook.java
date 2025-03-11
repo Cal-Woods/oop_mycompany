@@ -48,18 +48,20 @@ public class SupOrderBook {
         return 0;
     }
 
-
+    /**
+     * Gets the total cost of an order from a supplier.
+     * 
+     * @param id Given id to search in list.
+     * 
+     * @return total order cost, or -1.00 if id was not found
+     * 
+     * @throws IllegalArgumentException By internal method if id is < 1
+     */
     public double calcOrderCost(int id) {
-        //Declare SupOrder to store the matching return type of costBinSearch() method, or stay null
-        SupOrder match = null;
+        //Declare SupOrder to store the matching return type of costLinearSearch() method, or stay null
+        SupOrder match = costLinearSearch(id);
 
-        //Implement binary search for orders list SupOrder object with matching id
-        int start = 0;
-        int end = this.orders.size() - 1;
-
-        // Declare SupOrder that gets SupOrder object from orders
-        // SupOrder match = this.orders.get(id);
-
+        //No match found case
         if(match == null) {
             //Print message
             System.out.println("There was no match found for given id "+id+".");
@@ -67,7 +69,16 @@ public class SupOrderBook {
             return -1.00;
         }
 
-        return 0.00;
+        //Declare double total equals 0.00
+        double total = 0.00;
+
+        //Initialise for loop
+        for (int i = 0; i < match.getItems().size(); i++) {
+            //Add each Item unitCostPrice * quantity to total
+            total += match.getItems().get(i).getUnitCostPrice() * match.getItems().get(i).getQuantity();
+        }
+
+        return total;
     }
 
     /**
