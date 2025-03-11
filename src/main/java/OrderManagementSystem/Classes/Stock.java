@@ -68,7 +68,8 @@ public class Stock {
      * @param item An Item object to check against the ArrayList<Item> products
      * 
      * @throws IllegalArgumentException If Item is null
-     * @return 
+     * 
+     * @return Name of dearest item in instance list
      */
     public String findDearest() {
         //Validate size() of products
@@ -117,16 +118,16 @@ public class Stock {
             return new ArrayList<Item>(0);
 
         //Declare ArrayList<Item> ordersForSuppliers to hold products that need to be ordered
-        ArrayList<Item> ordersforSuppliers = new ArrayList<Item>(0);
+        ArrayList<Item> ordersForSuppliers = new ArrayList<Item>(0);
 
         //Initialise for loop
         for (int i = 0; i < this.getProducts().size(); i++) {
             //Check for Item that has a quantity lower than reOrderLevel AND is not onOrder
             if(this.getProducts().get(i).getQuantity() <= this.getProducts().get(i).getReOrderLevel() && this.getProducts().get(i).isOnOrder() == false) {
-                ordersforSuppliers.add(this.getProducts().get(i));
+                ordersForSuppliers.add(this.getProducts().get(i));
             }
         }
 
-        return ordersforSuppliers;
+        return ordersForSuppliers;
     }
 }
