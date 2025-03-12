@@ -2,6 +2,8 @@ package OrderManagementSystem.Classes;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Stock {
     //Attribute: ArrayList<Item> products
@@ -190,5 +192,26 @@ public class Stock {
         }
 
         return true;
+    }
+
+    /**
+     * Creates a HashMap consisting of String keys set to Item name attribute & Item objects for values.
+     */
+    public HashMap<String, Item> createSupplierMap() {
+        //Declare HashMap to store all Item objects from products
+        HashMap<String, Item> stockMap = new HashMap<String, Item>();
+
+        //Check if products isEmpty()
+        if(products.isEmpty()) {
+            return stockMap;
+        }
+
+        //Initialise for loop
+        for (int i = 0; i < this.products.size(); i++) {
+            //Insert each Item into map
+            stockMap.put(this.products.get(i).getName(), this.products.get(i));
+        }
+
+        return stockMap;
     }
 }
