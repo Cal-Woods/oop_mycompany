@@ -2,6 +2,7 @@ package OrderManagementSystem.Classes;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Objects;
 
 /**
 * Stores details for individual suppliers and contains methods for manipulating attributes.
@@ -183,5 +184,35 @@ public class Supplier {
     @Override
     public String toString() {
         return "Name: "+supplierName+"\nAddress: "+supplierAddress+"\nOwed amount(Euro): "+amountOwed+"\ncredit limit: "+creditLimit+"\n";
+    }
+
+    /**
+     * Checks if instance name attribute is equal to given Supplier object name attribute
+     * 
+     * @return True if instance & given obj name attributes are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        //Validation
+        if(obj == null) throw new IllegalArgumentException("Given Object obj was "+obj+". obj value must NOT be null.");
+        if(!(obj instanceof Supplier)) return false;
+
+        //Return if name attributes are equal
+        return ((Supplier) obj).getName().equalsIgnoreCase(this.getName());
+    }
+
+    /**
+     * Overrides hashCode to hash instance name attribute and multiply it by a prime number.
+     */
+    @Override
+    public int hashCode() {
+        //Declare int hash to prime number to add numeric values of attributes
+        int hash = 17;
+
+        int prime = 13;
+
+        hash += prime * Objects.hash(this.getName());
+
+        return hash;
     }
 }
