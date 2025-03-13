@@ -197,8 +197,13 @@ public class Supplier {
         if(obj == null) throw new IllegalArgumentException("Given Object obj was "+obj+". obj value must NOT be null.");
         if(!(obj instanceof Supplier)) return false;
 
-        //Return if name attributes are equal
-        return ((Supplier) obj).getName().equalsIgnoreCase(this.getName());
+        //Check if name is equal on both
+        if(this.getName().equalsIgnoreCase(((Supplier) obj).getName()) || this.getAddress().equalsIgnoreCase(((Supplier) obj).getAddress())) {
+            return true;
+        }
+
+
+        return false;
     }
 
     /**
