@@ -1,4 +1,11 @@
-/storage/emulated/0/Documents/OO_Programming/mycompany/src/main/java/Version1/Version1App.java
-/storage/emulated/0/Documents/OO_Programming/mycompany/src/main/java/Version1/Classes/Delivery.java
-/storage/emulated/0/Documents/OO_Programming/mycompany/src/main/java/Version1/Classes/Supplier.java
-/storage/emulated/0/Documents/OO_Programming/mycompany/src/main/java/Version1/Classes/Item.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/Delivery.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/Item.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/Stock.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/SupDeliveries.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/SupOrder.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/SupOrderBook.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/Supplier.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Classes/SupplierCollection.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Version1/Version1App.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Version2/Version2App.java
+/workspaces/oop_mycompany/src/main/java/OrderManagementSystem/Version3/Version3App.java
