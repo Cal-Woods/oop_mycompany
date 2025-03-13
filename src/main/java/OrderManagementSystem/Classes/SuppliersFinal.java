@@ -41,6 +41,8 @@ public class SuppliersFinal {
 
         temp.sort((s1, s2) -> {return 1 * s1.getName().compareToIgnoreCase(s2.getName());});
 
+        System.out.println("Suppliers in SuppliersFinal listed alphabetically by name.");
+        
         temp.forEach((supplier) -> {System.out.println(supplier+"\n");});
 
         return true;
