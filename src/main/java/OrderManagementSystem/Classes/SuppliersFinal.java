@@ -11,7 +11,7 @@ public class SuppliersFinal {
      * Initialises blank SuppliersFinal object.
      */
     public SuppliersFinal() {
-        sup = new TreeSet<Supplier>();
+        sup = new TreeSet<Supplier>((s1, s2) -> {return s1.hashCode() == s2.hashCode() ? 1 : -1;});
     }
 
     /**
@@ -45,4 +45,23 @@ public class SuppliersFinal {
 
         return true;
     }
+
+    /**
+     * Removes a given Supplier object from SuppliersFinal if it exists in instance.
+     * 
+     * @param s Given Supplier object
+     * 
+     * @return Nothing
+     */
+    public void removeSupplier(String address) {
+        //Validation
+        if(address == null) throw new IllegalArgumentException("Given Supplier was null. Please enter a non-null Supplier");
+        if(this.sup.isEmpty()) return;
+        
+        //For each Supplier in this.sup, check if given address matches Supplier address
+        this.sup.forEach((supplier) -> {if(supplier.getAddress().equalsIgnoreCase(address)) {this.sup.remove(supplier); return;}});
+    }
+
+
+
 }
