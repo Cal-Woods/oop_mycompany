@@ -207,7 +207,7 @@ public class Supplier {
     }
 
     /**
-     * Overrides hashCode to hash instance name attribute and multiply it by a prime number.
+     * Overrides hashCode to hash instance name & address attributes and multiply them by a prime number.
      */
     @Override
     public int hashCode() {
@@ -216,7 +216,8 @@ public class Supplier {
 
         int prime = 13;
 
-        hash += prime * Objects.hash(this.getName());
+        hash += prime * Objects.hash(this.supplierName);
+        hash += prime * Objects.hash(this.supplierAddress);
 
         return hash;
     }
