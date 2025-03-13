@@ -8,7 +8,17 @@ import OrderManagementSystem.Classes.*;
 
 public class Version4App {
     public static void main(String[] args) {
-        
+        //Initialise instance of Scanner to read user input
+        Scanner keyboard = new Scanner(System.in);
+
+        SuppliersFinal sup = new SuppliersFinal();
+
+        sup.add(new Supplier());
+        Supplier supplier = getStoreSupplierType(keyboard);
+
+        sup.add(supplier);
+
+        sup.displayAllName();
     }
 
     /**
@@ -122,5 +132,10 @@ public class Version4App {
 
         }
         return supplier;
+    }
+
+
+    public static void displayMenu() {
+
     }
 }
