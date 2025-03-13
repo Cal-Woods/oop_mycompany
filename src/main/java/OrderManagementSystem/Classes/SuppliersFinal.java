@@ -57,11 +57,33 @@ public class SuppliersFinal {
         //Validation
         if(address == null) throw new IllegalArgumentException("Given Supplier was null. Please enter a non-null Supplier");
         if(this.sup.isEmpty()) return;
-        
+
         //For each Supplier in this.sup, check if given address matches Supplier address
         this.sup.forEach((supplier) -> {if(supplier.getAddress().equalsIgnoreCase(address)) {this.sup.remove(supplier); return;}});
     }
 
+    /**
+     * Checks each Supplier object in instance for matching given name and name attributes and increases that
+     * Supplier object's amountOwed attribute by given value.
+     * 
+     * @param name Given name to check
+     * 
+     * @param value Given value by which to increase Supplier amountOwed attribute.
+     * 
+     * @return true if successful, false if name is full of whitespace or value is < 0 or instance is empty.
+     * 
+     * @throws IllegalArgumentException if name and/or value is null
+     */
+    public boolean increaseOwed(String name, double value) {
+        //Validation
+        if(name == null) throw new IllegalArgumentException("Given address was null. address must NOT be null!");
+        if(name.isBlank()) return false;
+        if(value < 0.00) return false;
+        if(this.sup.isEmpty()) return false;
 
+        //Call forEach instance method in TreeSet to loop through this.sup
+        this.sup.forEach((supplier) -> {if(name.equalsIgnoreCase(supplier.getName())) {supplier.increaseAmountOwed(value);}});
 
+        return true;
+    }
 }
